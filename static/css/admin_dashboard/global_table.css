@@ -1,0 +1,263 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Prevents scrollingss */
+  }
+  
+  body {
+    background: url('https://cdn.builder.io/api/v1/image/assets/TEMP/b78a39a9ea16df49cc6616f818aa2ad311a6df5e8195b44c3f1ec195c512d241?placeholderIfAbsent=true&apiKey=784521e35d904b9f9765b3476d13fe54') 
+    no-repeat center center fixed;
+    background-size: cover;
+    font-family: roboto, open sans;
+    display: flex;
+    flex-direction: column;
+  }
+    
+      .topbar {
+        top: 0;
+        width: 100%;
+        height: 5em;
+        display: flex;
+        align-items: center;
+        background-color:  rgba(12, 40, 92, 0.774);
+        color: #fff;  
+        font-family: serif; 
+        letter-spacing: 3px;
+      }
+    
+      .hero-logo { 
+        max-width: 9%;
+        height: 75%;
+        padding: 0 1% 0 2%;
+      }
+    
+      .sidebar {
+        width: 10%;
+        background-color: #072657;
+        color: white;
+        height: 93vh;
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        position: fixed;
+      }
+    
+      .sidebar ul {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      }
+    
+      .sidebar a {
+      color: white;
+      text-decoration: none;
+      margin: 10px 0;
+      padding: 10px;
+      display: block;
+      border-radius: 4px;
+      }
+    
+      .sidebar a:hover {
+      background-color: #4A78B0;
+      }
+    
+      .logout {
+      margin-top: auto; /* Push the log out link to the bottom */
+      }
+    
+      .header {
+        position: fixed;
+        background-color: #2C5F8B;
+        color: white;
+        padding: 15px;
+        text-align: center;
+      }
+    
+      .main-content {
+        height: 90vh; /* Ensures it fills the full screen height */
+        flex: 1;
+        padding: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 10%;
+    }
+    
+    .content-panel {
+        height: 100%; /* Makes it extend fully inside .main-content */
+        width: 100%;
+        border-radius: 10px;
+        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3);
+        padding: 46px 32px;
+        background-color: #fff;
+        display: flex;
+        flex-direction: column; /* Ensures it grows properly */
+    }
+    
+      .panel-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+      .panel-title {
+        font: 34px Katibeh, sans-serif;
+      }
+      .search-container {
+        margin-left: 10px;
+        flex-grow: 1; /* Makes the search bar expand */
+      }
+      
+      #searchInput {
+          width: 250px;
+          padding: 6px 10px;
+          border-radius: 5px;
+          border: 1px solid #ccc;
+      }
+    
+      .table-container {
+          height: 60vh; /* Adjust height as needed */
+          overflow-y: auto;
+          border: 1px solid #ccc; /* Optional border for visibility */
+      }
+      .table-wrapper{
+        .table-wrapper {
+          overflow-y: auto;
+      }
+      }
+      
+      /* Ensure table headers stay in place while scrolling */
+      .bookings-table thead {
+          position: sticky;
+          top: 0;
+          background: white; /* Keeps the headers visible */
+          z-index: 10;
+      }
+      .bookings-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        font-family: Katibeh, sans-serif;
+      }
+      .table-row {
+        background-color: rgba(225, 243, 242, 0.72);
+      }
+      .table-header {
+        text-align: center;
+        padding: 15px;
+        font-size: 24px;
+        font-weight: normal;
+      }
+      .table-cell {
+          text-align: center;
+          padding: 15px;
+          font-size: 20px;
+        }
+        .status-success {
+          text-align: center;
+          padding: 15px;
+          font-size: 20px;
+          color: rgb(44, 160, 44);
+        }
+        .status-error {
+          text-align: center;
+          padding: 15px;
+          font-size: 20px;
+          color: rgb(216, 14, 14);
+        }
+      .action-buttons {
+        display: flex;
+        justify-content: flex-end;
+        gap: 35px;
+        margin-top: 40px;
+      }
+      .action-btn {
+        color: #fff;
+        border-radius: 20px;
+        padding: 12px 48px;
+        border: none;
+        cursor: pointer;
+        background-color: rgb(54, 84, 134);
+        font: 24px Inter, sans-serif;
+      }
+      @media (max-width: 991px) {
+        .header-bar {
+          padding: 17px 20px;
+        }
+        .layout-wrapper {
+          flex-direction: column;
+        }
+        .nav-sidebar {
+          width: 100%;
+          padding: 20px;
+        }
+        .main-content {
+          padding: 20px;
+        }
+        .content-panel {
+          padding: 20px;
+        }
+        .bookings-table {
+          font-size: 14px;
+        }
+      }
+      @media (max-width: 640px) {
+        .header-bar {
+          font-size: 18px;
+        }
+        .panel-header {
+          flex-direction: column;
+          gap: 10px;
+        }
+        .panel-controls {
+          flex-wrap: wrap;
+        }
+        .bookings-table {
+          display: block;
+          overflow-x: auto;
+        }
+        .action-btn {
+          width: 100%;
+        }
+      }
+    
+    .modal-body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      max-height: 90vh; /* Prevent modal from becoming too large */
+      overflow-y: auto; /* Add scrolling if necessary */
+    }
+
+    
+    .modal-content {
+        min-height: 90vh; /* Makes the modal taller */
+    }
+
+    /* For the Delete Confirmation Modal */
+#deleteConfirmModal .modal-dialog {
+  max-width: 350px;  /* Makes the delete modal small */
+}
+
+#deleteConfirmModal .modal-content {
+  min-height: 150px; /* Adjust the content height for the delete modal */
+}
+
+#deleteConfirmModal .modal-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px; /* Padding for smaller modal */
+}
+
+#modalContainer .modal-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-height: 90vh; /* Prevents the modal from becoming too large */
+  overflow-y: auto; /* Adds scrolling if necessary */
+}
+
+
+      

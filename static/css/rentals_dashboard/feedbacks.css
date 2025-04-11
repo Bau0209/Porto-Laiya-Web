@@ -1,0 +1,199 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Prevents scrollingss */
+}
+
+body {
+  background: url('https://cdn.builder.io/api/v1/image/assets/TEMP/b78a39a9ea16df49cc6616f818aa2ad311a6df5e8195b44c3f1ec195c512d241?placeholderIfAbsent=true&apiKey=784521e35d904b9f9765b3476d13fe54') 
+  no-repeat center center fixed;
+  background-size: cover;
+  font-family: roboto, open sans;
+  display: flex;
+  flex-direction: column;
+}
+  
+    .topbar {
+      top: 0;
+      width: 100%;
+      height: 5em;
+      display: flex;
+      align-items: center;
+      background-color:  rgba(12, 40, 92, 0.774);
+      color: #fff;  
+      font-family: serif; 
+      letter-spacing: 3px;
+    }
+  
+    .hero-logo { 
+      max-width: 9%;
+      height: 75%;
+      padding: 0 1% 0 2%;
+    }
+  
+    .sidebar {
+      width: 10%;
+      background-color: #072657;
+      color: white;
+      height: 93vh;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      
+      position: fixed;
+    }
+  
+    .sidebar ul {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    }
+  
+    .sidebar a {
+    color: white;
+    text-decoration: none;
+    margin: 10px 0;
+    padding: 10px;
+    display: block;
+    border-radius: 4px;
+    }
+  
+    .sidebar a:hover {
+    background-color: #4A78B0;
+    }
+  
+    .logout {
+    margin-top: auto; /* Push the log out link to the bottom */
+    }
+  
+    .header {
+      position: fixed;
+      background-color: #2C5F8B;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+  
+    .main-content {
+      height: 90vh; /* Ensures it fills the full screen height */
+      flex: 1;
+      padding: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-left: 10%;
+  }
+  
+  .content-panel {
+      height: 100%; /* Makes it extend fully inside .main-content */
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3);
+      padding: 46px 32px;
+      background-color: #fff;
+      display: flex;
+      flex-direction: column; /* Ensures it grows properly */
+  }
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .panel-title {
+      font: 34px Katibeh, sans-serif;
+    }
+    .panel-controls {
+      display: flex;
+      gap: 9px;
+      font: 20px Inter, sans-serif;
+    }
+    .date-selector {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 13px;
+      border-radius: 10px;
+      box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+      cursor: pointer;
+      background-color: #fff;
+    }
+    .filter-selector {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 13px;
+      border-radius: 10px;
+      box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+      cursor: pointer;
+      background-color: #fff;
+    }
+    /* Feedback Section */
+.feedback-section {
+  display: flex;
+  margin-top: 20px;
+}
+
+/* Feedback Container */
+.feedback-container {
+    flex: 2;
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    max-height: 65vh;  /* Adjust height */
+    overflow-y: auto;   /* Enables scrolling */
+    overflow-x: hidden;
+}
+
+
+/* Feedback Item */
+.feedback-item {
+  display: flex;
+  align-items: first baseline;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Feedback Name & Stars */
+.feedback-item h3 {
+  font-size: 20px;
+  margin: 0;
+  flex: 1;
+}
+
+.stars {
+  color: #ffcc00;
+  font-size: 25px;
+  flex: 0.5;
+}
+
+/* Feedback Text (Text Box) */
+.feedback-text {
+  flex: 2;
+  background-color: #f8f9fa;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 18px;
+  color: #555;
+  max-width: 70%;
+  min-height: 20vh;
+}
+
+.rating-summary {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 19%;
+  border-left: 1px solid #ddd;
+}
+
+.rating-score {
+  font-size: 70px;
+  
+  color: #ffcc00;
+  margin-bottom: 0;
+}

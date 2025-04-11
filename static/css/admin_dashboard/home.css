@@ -1,0 +1,217 @@
+body {
+    background: url('https://cdn.builder.io/api/v1/image/assets/TEMP/b78a39a9ea16df49cc6616f818aa2ad311a6df5e8195b44c3f1ec195c512d241?placeholderIfAbsent=true&apiKey=784521e35d904b9f9765b3476d13fe54') no-repeat center center;
+    background-size: cover;
+    font-family: roboto, open sans;
+    margin: 0;
+    height: 100vh;
+}
+
+.topbar {
+    top: 0;
+    width: 100%;
+    height: 5em;
+    display: flex;
+    align-items: center;
+    background-color:  rgba(12, 40, 92, 0.774);
+    color: #fff;  
+    font-family: serif; 
+    letter-spacing: 3px;
+}
+
+.hero-logo { 
+    max-width: 9%;
+    height: 75%;
+    padding: 0 1% 0 2%;
+}
+
+.sidebar {
+  width: 10%;
+  background-color: #072657;
+  color: white;
+  height: 93vh;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  position: fixed;
+}
+
+.sidebar ul {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.sidebar a {
+  color: white;
+  text-decoration: none;
+  margin: 10px 0;
+  padding: 10px;
+  display: block;
+  border-radius: 4px;
+}
+
+.sidebar a:hover {
+  background-color: #4A78B0;
+}
+
+.logout {
+  margin-top: auto; /* Push the log out link to the bottom */
+}
+
+.header {
+    background-color: #2C5F8B;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+/* Status Summary */
+.status-summary {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Ensure elements wrap on smaller screens */
+    margin: 2% 0;
+    gap: 2%;
+    width: 95%;
+  }
+  
+  .welcome-card {
+    flex: 1 1 calc(25% - 3%); /* Flexible width based on available space */
+    max-width: 40%; /* Prevent cards from growing too wide */
+    min-width: 240px; /* Ensure a minimum width */
+    text-align: center;
+    padding: 20px;
+    background-color: #ffffff; /* White background */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    border: 1px solid #ddd; /* Optional border */
+    height: auto; /* Let the height adjust dynamically */
+  }
+  
+  .statistic-card {
+    flex: 1 1 calc(25% - 3%); /* Flexible width based on available space */
+    max-width: 18%; /* Prevent cards from growing too wide */
+    min-width: 200px; /* Ensure a minimum width */
+    text-align: center;
+    padding: 20px;
+    background-color: #ffffff; /* White background */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    border: 1px solid #ddd; /* Optional border */
+    height: auto; /* Let the height adjust dynamically */
+  }
+  
+  /* Heading Styles */
+  .statistic-card h3 {
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+  }
+  
+  .welcome-card h1 {
+    font-size: 1.8em;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+  }
+  
+  /* Paragraph Styles */
+  .statistic-card p {
+    font-size: 3em;
+    font-weight: bold;
+    color: #4CAF50;
+  }
+  
+  .welcome-card p {
+    font-size: 1.2em;
+  }
+  
+  /* Ensure responsiveness */
+  @media (max-width: 1024px) {
+    .status-summary {
+      justify-content: space-around;
+      gap: 2%;
+    }
+  
+    .welcome-card,
+    .statistic-card {
+      flex: 1 1 calc(33% - 2%); /* Three cards per row on medium screens */
+      max-width: 33%;
+    }
+  
+    .statistic-card p {
+      font-size: 2.5em; /* Slightly smaller font for medium screens */
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .status-summary {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .welcome-card,
+    .statistic-card {
+      flex: 1 1 100%; /* Full width for small screens */
+      max-width: 100%;
+      margin-bottom: 15px; /* Add spacing between cards */
+    }
+  
+    .statistic-card p {
+      font-size: 2em; /* Smaller font for smaller screens */
+    }
+  
+    .statistic-card h3 {
+      font-size: 1.2em;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .statistic-card p {
+      font-size: 1.8em; /* Smaller font for very small screens */
+    }
+  
+    .welcome-card h1 {
+      font-size: 1.5em;
+    }
+  }
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: first baseline;
+    align-items: center;
+    width: 100%;
+    height: 93vh;
+    margin-left: 10%;
+}
+
+.bar-panel {
+    display: flex;
+    flex-direction: row;
+    padding: 1.5%;
+    background-color: #ffffff; /* Ensure the background is visible */
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 95%; /* Ensure it spans the available space */
+    justify-content: space-between; /* Space out the charts */
+}
+
+.bar-graph {
+    flex: 1; /* Allow each chart container to grow */
+    margin-right: 2%; /* Add spacing between charts */
+}
+
+#barChart2 {
+    width: 100% !important;  /* Make sure the canvas takes the full width of its container */
+    height: 45vh !important; /* Set a fixed height for consistency */
+    border-radius: 10px;
+    display: block;  /* Remove inline-block behavior */
+}
+
+#barChart1 {
+  width: 100% !important;  /* Make sure the canvas takes the full width of its container */
+  height: 50vh !important; /* Set a fixed height for consistency */
+  border-radius: 10px;
+  display: block;  /* Remove inline-block behavior */
+}
+

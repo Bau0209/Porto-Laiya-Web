@@ -1,0 +1,262 @@
+/* General styles */
+body {
+    margin: 0;
+    line-height: 1.6;
+    font-family: sans-serif; 
+    letter-spacing: 3px;
+}
+
+/* Navigation */
+.nav-container {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 5em;
+    z-index: 900;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color:  rgba(12, 40, 92, 0.774);
+    color: #fff;  
+    font-family: serif; 
+    letter-spacing: 3px;
+}
+
+.brand-logo {
+    margin-left: 2em;
+}
+
+.nav-links {
+    margin-right: 2em;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 1rem;
+}
+
+.nav-links a:hover {
+    color: #6c74db;
+}
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+    color: white;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-logo {
+    width: 450px;
+    margin-top: 18em;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.hero-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 2em;
+    letter-spacing: 5px;
+}
+
+.cta-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.cta-container .cta-button {
+    background-color: #2731c4;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    margin: 0;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.cta-container .cta-button:hover {
+    background-color: #2731c4;
+}
+
+/* Featured Section */
+.featured-section {
+    padding: 2rem;
+}
+
+.featured-content {
+    margin: 2% 15% 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.featured-title {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #333;
+}
+
+.featured-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px; /* Space between cards */
+    justify-content: center; /* Center align the cards */
+}
+
+.featured-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+    width: calc(33.33% - 20px); /* Three cards per row with spacing */
+    max-width: 400px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.featured-card:hover {
+    transform: scale(1.05); /* Slightly increase the size */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Add shadow to make it pop */
+}
+
+.featured-image {
+    width: 100%;                /* Make images take up full width of the container */
+    height: 300px;              /* Set a fixed height for all images */
+    object-fit: cover;          /* Ensure the image covers the container without distortion */
+    object-position: center;    /* Ensure the image is centered if it gets cropped */
+}
+
+.view-button {
+    width: 15%;
+    margin-top: 2%;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .featured-card {
+      width: calc(50% - 20px); /* Two cards per row on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .featured-card {
+      width: 100%; /* One card per row on extra-small screens */
+    }
+}
+
+* {box-sizing:border-box}
+
+.view-button:hover {
+    background-color: #0056b3;
+}
+
+.about-section {
+    padding: 0 20% 0;
+    text-align: center;
+    background: #fff;
+    color: #333;
+}
+
+.divider-no-margin hr{
+    margin: 0;
+}
+
+.about-title {
+    font-size: 5rem;
+    padding-top: 5%;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: #0056b3;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
+.about-section h2,p {
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.about-description {
+    line-height: 1.8;
+    font-size: 1.2em;
+}
+
+.amenities-grid {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin: 4% 0 0;
+    padding-bottom: 6%;
+}
+
+.amenity-card {
+    width: calc(33.33% - 20px); /* Three cards per row with spacing */
+    max-width: 400px;
+    height: 70%;
+    flex: 1 1 calc(10% - 5rem);
+    background: #fff;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.amenity-image {
+    width: 100%;
+    height: auto;
+    margin-bottom: 1rem;
+}
+
+footer {
+    background-color: #025ec0;
+    color: white;
+    text-align: center;
+    padding: 5em 0;
+}
+footer a {
+    color: #fff;
+    text-decoration: none;
+}
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Fullscreen Overlay */
+.fullscreen-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+  
+  .fullscreen-overlay img {
+    max-width: 90%;
+    max-height: 90%;
+  }
+  
+  .fullscreen-overlay .close-btn {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+  }
+  

@@ -1,0 +1,523 @@
+body {
+  font-family: sans-serif;
+  margin: 0;
+}
+
+/* Navigation */
+.nav-container {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 5em;
+  z-index: 900;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(12, 40, 92, 0.774);
+  color: #fff;
+  font-family: serif;
+  letter-spacing: 3px;
+}
+
+.brand-logo {
+  margin-left: 2em;
+}
+
+.nav-links {
+  margin-right: 2em;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 1rem;
+}
+
+.nav-links a:hover {
+  color: #6c74db;
+}
+
+/* Main Content */
+.main-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#data-container {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  margin: 4% 0 5% 0;
+  background-color: #ffffff;
+}
+
+.header-section {
+  align-self: start;
+  width: 1182px;
+  max-width: 100%;
+  margin-bottom: 3%;
+}
+
+.header-content {
+  display: flex;
+}
+
+.logo-column {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  margin-left: 0;
+}
+
+.logo-image {
+  aspect-ratio: 1.4;
+  object-fit: contain;
+  object-position: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 54px;
+  flex-grow: 1;
+}
+
+.title-column {
+  display: flex;
+  flex-direction: column;
+  width: 76%;
+  margin-right: 20px;
+}
+
+.title-wrapper {
+  margin: 4% 4% 0 0;
+  width: 100%;
+}
+
+.title-header {
+  display: flex;
+  width: 100%;
+  font-family: Karma, sans-serif;
+  flex-wrap: wrap;
+  gap: 25%;
+}
+
+.section-title {
+  color: #040404;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 5.4px;
+}
+
+.property-name {
+  color: #040404;
+  font-size: 55px;
+  text-transform: uppercase;
+}
+
+.title-header h1 {
+  color: #040404;
+  font-size: 50px;
+  font-weight: 700;
+  letter-spacing: 5.4px;
+  text-transform: uppercase;
+}
+
+/* Carousel */
+.carousel {
+  display: flex;
+  flex-direction: row; 
+  align-items: center;
+  gap: 20px;
+}
+
+.carousel-main {
+  flex: 1;
+  cursor: pointer; /* Indicate that clicking is interactive */
+}
+
+.carousel-main img {
+  width: 40vw;
+  height: 30vw;
+  object-fit: cover;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+}
+
+.thumbnail {
+  display: flex;
+  flex-direction: column;
+}
+
+.thumbnail-highlight {
+  border: 3px solid #00f; /* Blue border for highlighting */
+  transform: scale(1.1); /* Slightly increase the size */
+  transition: all 0.3s ease; /* Smooth transition for changes */
+}
+
+.carousel-thumbnails {
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 14px;
+  height: auto; /* Ensure consistent button height */
+  white-space: nowrap; /* Prevent text wrapping */
+}
+
+.carousel-thumbnails {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 700px; /* Adjust height */
+  gap: 8px;
+  padding-right: 5px; /* Prevent scrollbar from overlapping */
+}
+
+.carousel-thumbnails img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: transform 0.2s;
+}
+
+.carousel-thumbnails img:hover {
+  transform: scale(1.1);
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .gallery-container {
+      flex-direction: column;
+  }
+
+  .main-image-wrapper {
+      order: 1;
+  }
+
+  .thumbnails-wrapper {
+      flex-direction: row;
+      gap: 10px;
+      overflow-x: auto;
+  }
+}
+
+.add-review-section {
+  width: 100%;
+    height: auto;
+    background-color: #fffefe;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    padding: 2%;
+    margin-right: 4%;
+    text-align: center;
+    justify-content: center;
+}
+
+.add-review-section h3 {
+  margin-bottom: 10px;
+}
+
+/* Center the dropdowns */
+.name-container, .stars-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+/* Make dropdowns visually appealing */
+#user-name, #stars {
+  width: auto;
+  min-width: 150px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  text-align: center;
+}
+
+
+#review-form {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: auto;
+}
+
+/* Center the entire stars selection */
+.stars-container {
+  display: flex;
+  justify-content: center; /* Centers the dropdown horizontally */
+  width: 100%;
+}
+
+/* Adjust dropdown width and styling */
+#stars {
+  width: auto; /* Adjusts width to fit content */
+  min-width: 120px; /* Ensures it’s not too small */
+  padding: 5px 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  text-align: center;
+}
+
+#review-text {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: none;
+}
+
+
+button {
+  background: #007bff;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #0056b3;
+}
+
+
+.content-wrapper {
+  width: 90%;
+  display: flex;
+  gap: 20px;
+  padding: 2%;
+}
+
+.property-info {
+  width: 68%;
+  color: #000;
+  font: Karla, sans-serif;
+  padding: 2%;
+}
+
+.location {
+  display: flex;
+  gap: 1px;
+  text-transform: uppercase;
+  flex-wrap: wrap;
+}
+
+.address {
+  font-size: larger;
+  flex-grow: 1;
+  width: 100%;
+}
+
+.description {
+  margin: 35px 0 0 42px;
+  font: 25px Kdam Thmor, sans-serif;
+}
+
+.booking-panel {
+  width: 32%;
+  border-radius: 10px;
+  background-color: #fffefe;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  padding: 25px 30px;
+  font: 400 28px Karla, sans-serif;
+  color: #000;
+  height: 14%;
+}
+
+.price-header {
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.night-rate {
+  text-transform: uppercase;
+  margin-top: 23px;
+}
+
+.day-rate {
+  text-transform: uppercase;
+  margin-top: 9px;
+}
+
+.booking-form {
+  margin: 36px 0 0 13px;
+  display: flex;
+  gap: 10px;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.form-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}
+
+.form-input {
+  text-align: right;
+}
+
+.divider {
+  width: 100%;
+  margin: 29px 0;
+  border-top: 1px solid #000;
+}
+
+.price-breakdown {
+  display: flex;
+  gap: 100px;
+  font-size: 11px;
+  margin: 11px 0 0 17px;
+}
+
+.price-items {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.price-values {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  gap: 8px;
+}
+
+.total-price {
+  font-size: 15px;
+  text-align: right;
+  align-self: end;
+  margin-top: 8px;
+}
+
+.book-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 11px;
+  background: #365486;
+  color: #fff;
+  width: 120px;
+  height: 32px;
+  margin: 50px auto 0;
+  font: 15px Kdam Thmor, sans-serif;
+  cursor: pointer;
+}
+
+.rating-panel {
+  width: 100%;
+  font: Kantumruy Pro, sans-serif;
+  margin: 2%;
+  padding: 1%;
+  display: flex;
+  gap: 2%;
+}
+
+.rating-value {
+  font-size: 75px;
+  margin-left: 104px;
+  margin-top: 2%;
+  color: #ff9900;
+}
+
+.rating-stars {
+  display: flex;
+  justify-content: center;
+  width: 216px;
+  margin: 17px 0 0 49px;
+  font-size: 25px; /* Adjust size as needed */
+  letter-spacing: 5px; /* Add spacing between stars */
+}
+
+.review-container {
+  display: flex; /* Make the container a flexbox */
+  flex-direction: row; /* Arrange children in a row */
+  gap: 2rem; /* Space between panels */
+  justify-content: flex-start; /* Align items to the start */
+  flex-wrap: wrap; /* Allow items to wrap if there's not enough space */
+  width: 100%;
+}
+
+.review-panel {
+  width: 100%;
+  height: auto;
+  background-color: #fffefe;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  padding: 2%;
+  margin-right: 4%;
+}
+
+@media (max-width: 991px) {
+  .resort-details {
+    padding-bottom: 100px;
+  }
+
+  .header {
+    max-width: 100%;
+    padding: 0 20px;
+  }
+
+  .nav-links {
+    max-width: 100%;
+  }
+
+  .main-content {
+    margin-top: 40px;
+    padding: 0 20px;
+  }
+
+  .page-header {
+    max-width: 100%;
+    margin-right: 10px;
+  }
+
+  .section-title {
+    max-width: 100%;
+  }
+
+  .property-name {
+    max-width: 100%;
+    font-size: 40px;
+  }
+
+  .hero-image {
+    max-width: 100%;
+    margin: 40px 3px 0 0;
+  }
+
+  .content-wrapper {
+    flex-direction: column;
+    margin: 40px 6px 0 0;
+  }
+
+  .property-info {
+    width: 100%;
+  }
+
+  .address {
+    max-width: 100%;
+  }
+
+  .description {
+    max-width: 100%;
+  }
+
+  .booking-panel {
+    width: 100%;
+    margin-top: 40px;
+    padding: 0 20px;
+  }
+
+  .book-button {
+    margin-top: 40px;
+  }

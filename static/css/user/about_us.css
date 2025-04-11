@@ -1,0 +1,272 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    background-size: cover;
+}
+
+/* Navigation */
+.nav-container {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 5em;
+    z-index: 900;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(12, 40, 92, 0.774);
+    color: #fff;  
+    font-family: serif; 
+    letter-spacing: 3px;
+}
+
+.brand-logo {
+    margin-left: 2em;
+}
+
+.nav-links {
+    margin-right: 2em;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 1rem;
+}
+
+.nav-links a:hover {
+    color: #6c74db;
+}
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+    color: white;
+    height: 30vh;
+    display: flex;
+    gap: 1em;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    padding-top: 4em;
+}
+
+.hero-logo {
+    width: 15rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: bold;
+    letter-spacing: 5px;
+}
+
+/* Main Content */
+.main-content {
+    justify-content: center;
+    align-items: center;
+    color: #000;
+    text-align: center;
+    padding: 3% 19%;
+    font: 400 32px/1.6 Karma, sans-serif;
+    line-height: 2.3;
+}
+
+/* Social Links */
+.social-links {
+    display: flex;
+    margin-top: 38px;
+    align-items: center;
+    gap: 27px;
+    justify-content: center;
+}
+
+.social-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: #365486;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.icon {
+    color: #fff;
+    font-size: 38px;
+}
+
+.section-divider {
+    border: 2px solid #ababab;
+    margin: 74px auto;
+    width: 100%;
+    max-width: 1742px;
+}
+
+/* Properties Heading */
+.properties-heading {
+    color: #000;
+    letter-spacing: 5.4px;
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 60px;
+    font: 700 36px Karma, sans-serif;
+}
+
+/* Development Plan */
+.development-plan {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  /* Centers content vertically */
+    align-items: center;      /* Centers content horizontally */
+    margin-top: 73px;
+    width: 100%;
+    font-family: Karma, sans-serif;
+    color: #212560;
+    padding: 0 20px;
+}
+
+
+.plan-title {
+    font-size: 40px;
+    font-weight: 700;
+    letter-spacing: 6px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.plan-location {
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 3px;
+    margin-top: 12px;
+    text-align: center;
+}
+
+.stats-grid {
+    display: flex;
+    margin-top: 52px;
+    width: 100%;
+    max-width: 1537px;
+    gap: 40px;
+    text-align: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stat-value {
+    font-size: 75px;
+    font-weight: 700;
+    letter-spacing: 11.25px;
+    text-transform: uppercase;
+}
+
+.stat-description {
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 3px;
+    margin-top: 20px;
+    max-width: 200px;
+}
+
+.property-types {
+    display: flex;
+    margin-top: 55px;
+    width: 100%;
+    max-width: 1100px;
+    gap: 100px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.property-category {
+    flex: 1;
+    min-width: 300px;
+}
+
+.category-title {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 3.6px;
+    margin-bottom: 20px;
+}
+
+.category-details {
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 3px;
+    line-height: 1.6;
+}
+
+.development-map {
+    width: 90%;
+    margin-top: 68px;
+    object-fit: contain;
+}
+
+/* Media Queries */
+@media (max-width: 991px) {
+    .navigation-bar {
+        padding: 20px;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .hero-content {
+        margin-top: 40px;
+        font-size: 32px;
+    }
+
+    .main-content {
+        margin-top: 40px;
+        font-size: 24px;
+    }
+
+    .stats-grid {
+        margin-top: 40px;
+        gap: 20px;
+    }
+
+    .stat-value {
+        font-size: 40px;
+    }
+
+    .stat-description {
+        font-size: 16px;
+    }
+
+    .property-types {
+        gap: 40px;
+        margin-top: 40px;
+    }
+}
+
+@media (max-width: 640px) {
+    .brand-name {
+        font-size: 20px;
+    }
+
+    .hero-content {
+        font-size: 24px;
+    }
+
+    .stat-item {
+        width: 100%;
+    }
+
+    .property-category {
+        min-width: 100%;
+    }
+}

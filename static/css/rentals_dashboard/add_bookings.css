@@ -1,0 +1,299 @@
+body {
+    font-family: sans-serif;
+    margin-bottom: 3%;
+  }
+
+  .hidden {
+    display: none;
+}
+
+  .flash-message {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.flash-message.success {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.flash-message.error {
+    background-color: #f44336;
+    color: white;
+}
+
+.booking-container {
+    background: #fff;
+    font-family: "Karla", sans-serif;
+  }
+  .rental-title {
+    font-size: 48px;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 36px;
+  }
+  .section-divider {
+    border-top: 1px solid #000;
+    margin: 20px 0;
+  }
+  .form-content {
+    display: flex;                /* Use flexbox */
+    flex-direction: column;       /* Stack children vertically */
+    justify-content: flex-start;  /* Align items to the top */
+    align-items: center;          /* Align items horizontally in the center */
+    padding: 0 47px;
+    width: 70%;
+    margin: 0 auto;               /* Horizontally center the container */
+  }
+  
+  .section-header {
+    font-size: 32px;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+  }
+
+  #transactions-dropdown {
+    height: 50px;
+    width: 250px;
+  }
+  
+  .form-row {
+    display: flex;
+    justify-content: space-between; /* Align label to the left and input to the right */
+    margin-bottom: 15px;
+    width: 100%;  /* Ensure the row takes up the full width */
+  }
+  
+  .form-label {
+    font-size: 30px;
+    font-weight: regular;
+    flex: 1; /* Allow label to take available space */
+    text-align: left; /* Align label to the left */
+  }
+  
+  .form-input {
+    width: 100%; /* Make the input take up all the available space */
+    max-width: 300px; /* Adjust input field width */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  
+  .gender-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 22px;
+  }
+  .radio-group {
+    display: flex;
+    gap: 20px;
+  }
+  .radio-option {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 16px;
+  }
+
+  .button-container {
+    width: 100%;               /* Take up the full width */
+    display: flex;             /* Use flexbox to position elements */
+    justify-content: flex-end; /* Align the button to the right */
+    margin-top: 20px;          /* Space above the button */
+  }
+  
+  .add-guest-button {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .add-guest-button:hover {
+    background-color: #218838;
+  }
+  .price-display {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-bottom: 22px;
+  }
+  .form-label {
+    margin-right: 10px;  /* Adjust this value as needed */
+  }
+  .price-amount {
+    font-size: 28px;
+    font-weight: 700;
+  }
+  .price-period {
+    font-size: 20px;
+    font-weight: 400;
+  }
+  .summary-container {
+    margin-top: 20px;
+    width: 90%;
+  }
+  .summary-row, .total-row {
+    display: flex;
+    justify-content: space-between; /* Distribute space between the items */
+    margin-bottom: 15px;            /* Space between rows */
+  }
+  .summary-row div, .total-row div {
+    font-size: 18px;
+  }
+  .summary-input {
+    width: 40%;  /* Make it take the full width of the container */
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 5px;
+    background-color: #f9f9f9;
+  }
+  .book-button {
+    width: 100%;
+    padding: 15px;
+    background: #e74c3c;
+    color: #fff;
+    border: none;
+    border-radius: 11px;
+    cursor: pointer;
+    margin-top: 20px;
+    font: 15px "Kdam Thmor", sans-serif;
+  }
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+  @media (max-width: 991px) {
+    .booking-container {
+      padding: 40px 20px;
+    }
+    .rental-title {
+      font-size: 40px;
+    }
+    .form-content {
+      padding: 0 20px;
+    }
+    .form-row {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .form-label {
+      margin-bottom: 5px;
+    }
+    .form-input {
+      width: 100%;
+      max-width: none;
+    }
+    .gender-container {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .radio-group {
+      margin-top: 10px;
+    }
+    .summary-row {
+      font-size: 20px;
+    }
+    .total-row {
+      font-size: 20px;
+    }
+  }
+  @media (max-width: 640px) {
+    .booking-container {
+      padding: 20px;
+    }
+    .rental-title {
+      font-size: 32px;
+    }
+    .section-header {
+      font-size: 28px;
+    }
+    .form-label {
+      font-size: 20px;
+    }
+    .summary-row {
+      font-size: 18px;
+    }
+    .total-row {
+      font-size: 18px;
+    }
+  }
+  /* Style the modal */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4); /* Background color */
+}
+
+/* Modal content */
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+}
+
+/* Close button */
+.close {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    color: black;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: red;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Style for the payment inputs */
+.payment-input {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px; /* Optional for rounded corners */
+}
+
+/* Submit button */
+.payment-submit {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.payment-submit:hover {
+    background-color: #45a049;
+}

@@ -1,0 +1,272 @@
+/* style.css */
+body {
+  font-family: sans-serif;
+  margin: 0;
+  background-size: cover;
+}
+
+/* Navigation */
+.nav-container {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 5em;
+  z-index: 900;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color:  rgba(12, 40, 92, 0.774);
+  color: #fff;  
+  font-family: serif; 
+  letter-spacing: 3px;
+}
+
+.brand-logo {
+  margin-left: 2em;
+}
+
+.nav-links {
+  margin-right: 2em;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 1rem;
+}
+
+.nav-links a:hover {
+  color: #6c74db;
+}
+
+
+.header-section {
+  align-self: start;
+  width: 1182px;
+  max-width: 100%;
+  margin-bottom: 3%;
+}
+
+.header-content {
+  display: flex;
+}
+
+.logo-column {
+  display: flex;
+  flex-direction: column;
+  line-height: normal;
+  width: 25%;
+  margin-left: 0;
+}
+
+.logo-image {
+  aspect-ratio: 1.4;
+  object-fit: contain;
+  object-position: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 54px;
+  flex-grow: 1;
+}
+
+.title-column {
+  display: flex;
+  flex-direction: column;
+  line-height: normal;
+  width: 76%;
+  margin-right: 20px;
+}
+
+.title-wrapper {
+  display: flex;
+  margin: 4% 4% 0 0;
+  width: 100%;
+  flex-direction: column;
+}
+
+.title-header {
+  display: flex;
+  width: 100%;
+  font-family: Karma, sans-serif;
+  flex-wrap: wrap;
+  gap: 25%;
+}
+
+.section-title {
+  color: #040404;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 5.4px;
+}
+
+.search-container{
+  display: flex;
+  margin-top: 18px;
+  max-width: 100%;
+}
+
+#search-input {
+  margin: 0;
+  width: 300px; /* Adjust the width */
+  height: 30px; /* Adjust the height */
+  padding: 10px; /* Add padding for better spacing inside the box */
+  font-size: 16px; /* Adjust the font size */
+  border: 1px solid #ccc; /* Add a border */
+  border-radius: 4px; /* Add rounded corners */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow for better aesthetics */
+}
+
+.pagination {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.pagination a {
+  color: #007BFF;
+  padding: 8px 16px;
+  text-decoration: none;
+  border: 1px solid #007BFF;
+  margin: 0 5px;
+  border-radius: 4px;
+}
+
+.pagination a:hover {
+  background-color: #007BFF;
+  color: white;
+}
+
+.pagination .active {
+  background-color: #007BFF;
+  color: white;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#data-container {
+  margin: 9% 0 5%;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Ensure full screen height */
+  padding: 20px; /* Add some spacing */
+  padding-bottom: 5%;
+  background-color: #ffffff; /* Optional for contrast */
+}
+
+.card-container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping of cards */
+  justify-content: center;
+  gap: 50px;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.card {
+  width: 80%;
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 20px 0px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  text-align: center;
+}
+
+.image-column {
+  width: 50%;
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two equal columns */
+  gap: 10px; /* Space between grid items */
+  padding: 4%;
+}
+
+.resort-image {
+  width: 100%; /* Make images take full width of grid cell */
+  min-height: 200px; /* Maintain aspect ratio */
+  max-height: 200px;
+  border-radius: 5px; /* Optional for rounded corners */
+}
+
+.card img {
+  max-width: 100%;
+  height: 100%;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+.card-layout {
+  display: flex;
+}
+
+.info-column {
+  display: flex;
+  flex-direction: column;
+  line-height: normal;
+  width: 41%;
+  margin-left: 20px;
+}
+
+.info-content {
+  text-align: left;
+  display: flex;
+  margin-top: 13px;
+  width: 100%;
+  flex-direction: column;
+  font-weight: 400;
+}
+
+.resort-info {
+  display: flex;
+  flex-direction: column;
+  color: #000;
+}
+
+.resort-name {
+  text-transform: uppercase;
+  font: 40px Karla, sans-serif;
+}
+
+.resort-description {
+  margin-top: 5px;
+}
+
+.view-more-btn {
+  align-self: start;
+  border-radius: 11px;
+  background-color: rgba(88, 116, 156, 0.75);
+  min-height: 28px;
+  color: #050505;
+  text-align: center;
+  margin: 16px 0 0;
+}
+
+h3 {
+  margin-top: 10px;
+  font-size: 18px;
+  text-transform: capitalize;
+}
+
+h1 {
+  text-align: center;
+  margin: 2rem;
+}
+
+p {
+  font-size: 20px;
+}
+
+#page-numbers {
+  margin-top: 20px;
+  font-size: 16px;
+}

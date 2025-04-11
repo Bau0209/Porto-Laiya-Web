@@ -1,0 +1,717 @@
+
+.popup-container {
+  width: 100%; /* Ensures it doesn't shrink */
+  max-width: 800px; /* Prevents it from stretching too wide */
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.popup-header {
+display: flex;
+flex-direction: column;
+}
+
+.popup-info {
+display: flex;
+flex-grow: 1;
+flex-direction: column;
+font-family: Inter, sans-serif;
+color: #000;
+width: 100%;
+}
+
+.popup-id {
+font: 700 32px Inter, sans-serif;
+margin: 0 0 20px 0;
+}
+
+.popup-main-content {
+display: flex;
+justify-content: space-between; /* Align sections to the left */
+align-items: flex-start;
+gap: 40px; /* Add proper spacing */
+width: 100%;
+}
+
+.left-section,
+.right-section {
+display: flex;
+flex-direction: column;
+gap: 10px;
+}
+
+.left-section {
+width: 60%;
+}
+
+.right-section {
+width: 50%;
+}
+
+.input-field {
+width: 200px;
+padding: 8px 12px;
+border: 1px solid #ccc;
+border-radius: 4px;
+font: 400 16px Inter, sans-serif;
+}
+
+.input-group {
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+.input-label {
+font: 400 15px Inter, sans-serif;
+color: #000;
+}
+
+/*style for dropbox*/
+.property-id-container {
+display: flex;
+align-items: center;
+justify-content: space-between;
+width: 100%;
+margin-bottom: 15px;
+}
+#property-id {
+flex: 2; /* Makes the dropdown take more space */
+padding: 10px;
+font-size: 16px;
+border: 2px solid #ccc;
+position: relative;
+left: 230px;
+bottom: 40px;
+border-radius: 5px;
+background-color: #fff;
+appearance: none; /* Removes default browser styling */
+cursor: pointer;
+transition: border-color 0.3s ease;
+text-align: right; /* Aligns text to the right */
+}
+
+.status-group {
+width: 100%;
+}
+
+fieldset {
+border: none;
+padding: 0;
+margin: 20px 0;
+width: 100%;
+}
+
+legend {
+font: 400 20px Inter, sans-serif;
+margin-bottom: 10px;
+}
+
+.radio-group {
+display: flex;
+flex-direction: row;
+gap: 10px;
+}
+
+.radio-item {
+display: flex;
+align-items: center;
+gap: 4px;
+}
+
+.radio-item input[type="radio"] {
+width: 20px;
+height: 20px;
+}
+
+.radio-item label {
+display: flex;
+align-items: center;
+gap: 4px;
+font: 20px Karma, sans-serif;
+cursor: pointer;
+}
+
+.status-icon {
+width: 24px;
+height: 24px;
+}
+
+.checkin-section {
+margin-top: 40px;
+width: 100%;
+}
+
+.checkin-container {
+display: flex;
+gap: 40px;
+}
+
+.checkin-times {
+display: flex;
+flex-direction: column;
+gap: 20px;
+width: 50%;
+}
+
+.fee-details {
+width: 50%;
+}
+
+.fee-status {
+display: flex;
+flex-direction: column;
+gap: 26px;
+}
+
+.popup-action-buttons {
+display: flex;
+margin-top: 40px;
+gap: 20px;
+justify-content: flex-end;
+}
+/*add button on add guest*/
+.add-guest-btn {
+aspect-ratio: 1;
+width: 31px;
+margin-top: 68px;
+cursor: pointer;
+background: none;
+border: none;
+padding: 12px;
+position: relative;
+left: 620px;
+}
+/* submit button/add button on Add guest modal*/
+.submit-btn {
+aspect-ratio: 3.75;
+width: 120px;
+position: relative;
+left: 370px;
+border-radius: 11px;
+align-self: end;
+max-width: 100%;
+margin: 5px 27px 0 0;
+cursor: pointer;
+background: #b32626;
+color: #fff;
+border: none;
+padding: 0;
+}
+/*description style in view more on properties*/
+
+
+.description-content {
+flex: 1;
+font: 400 32px Inter, sans-serif;
+}  
+.description-title {
+font-size: 400 32px Inter, sans-serif;
+font-weight: bold;
+position: relative;
+left: 50px;
+margin-bottom: 1rem;
+}
+.description-box{
+height: 400px;
+width: 300px;
+padding: 8px 12px;
+border: 1px solid #ccc;
+border-radius: 4px;
+position: relative;
+left: 45px;
+font: 400 16px Inter, sans-serif;
+}
+
+.edit-btn,
+.delete-btn {
+border-radius: 20px;
+padding: 12px 56px;
+border: none;
+color: #fff;
+cursor: pointer;
+font: 400 24px Inter, sans-serif;
+min-width: 150px;
+transition: background-color 0.3s ease;
+}
+
+.edit-btn {
+background-color: #365486;
+}
+
+.delete-btn {
+background-color: #b32626;
+}
+
+.edit-btn:hover {
+background-color: #2a4268;
+}
+
+.delete-btn:hover {
+background-color: #8e1f1f;
+}
+
+@media (max-width: 991px) {
+.transaction-popup {
+  padding: 20px;
+}
+
+.main-content {
+  flex-direction: column;
+  gap: 20px;
+}
+
+.left-section,
+.right-section {
+  width: 100%;
+}
+
+.input-group {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.input-field {
+  width: 100%;
+}
+
+.checkin-container {
+  flex-direction: column;
+  gap: 20px;
+}
+
+.checkin-times,
+.fee-details {
+  width: 100%;
+}
+
+.action-buttons {
+  justify-content: center;
+}
+
+.edit-btn,
+.delete-btn {
+  padding: 12px 30px;
+}
+}
+
+
+
+/*payfee style*/
+.env-fees-container {
+display:flex;
+flex-direction: column;
+background-color: rgb(253, 255, 255);
+padding: 20px 20px 30px;
+max-width: 650px;
+max-height: 800px;
+position: relative;
+margin-top: auto;
+margin-bottom: 20px;
+}
+
+
+.customer-table {
+width: 100%;
+border-collapse: separate;
+border-spacing: 0 15px;
+}
+
+.customer-table th {
+padding: 15px;
+text-align: left;
+font: 400 24px karma, sans-serif;
+color: #000;
+}
+
+.customer-table td {
+padding: 15px;
+vertical-align: middle;
+}
+
+/* Style for the checkboxes */
+input[type="checkbox"] {
+appearance: none; /* Remove default browser styling */
+width: 24px;
+height: 24px;
+border: 2px solid #9c9b9b; /* Use primary color for the border */
+border-radius: 4px;
+background-color: white;
+cursor: pointer;
+position: relative;
+transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Checkbox checked state */
+input[type="checkbox"]:checked {
+background-color: #365486; /* Use primary color for the background */
+border-color: #365486;
+}
+
+/* Checkmark for the checked state */
+input[type="checkbox"]:checked::after {
+content: "✔"; /* Unicode checkmark */
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+font-size: 16px;
+color: white; /* Checkmark color */
+}
+
+/* Hover state */
+input[type="checkbox"]:hover {
+border-color: #2196F3; /* Change border color on hover */
+}
+
+/* Focus state */
+input[type="checkbox"]:focus {
+outline: none;
+box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.3); /* Add a focus ring */
+}
+
+.profile-section {
+display: flex;
+gap: 14px;
+align-items: flex-start;
+}
+
+.profile-image {
+width: 174px;
+aspect-ratio: 1.19;
+object-fit: contain;
+}
+
+.text-content {
+display: flex;
+flex-direction: column;
+gap: 5px;
+}
+
+.name {
+font: 400 24px Karma, sans-serif;
+color: #000;
+}
+
+.details {
+font: 400 16px Karma, sans-serif;
+color: #000;
+}
+
+
+@media (max-width: 991px) {
+.env-fees-container {
+padding: 40px 20px;
+min-width: auto;
+}
+
+.customer-table {
+display: block;
+overflow-x: auto;
+}
+
+.profile-section {
+flex-direction: column;
+}
+
+.profile-image {
+width: 120px;
+}
+}
+.text-content {
+display: flex;
+flex-direction: column;
+gap: 5px;
+}
+
+.name {
+font-family: Karma, sans-serif;
+font-size: 24px;
+}
+
+.details {
+font-family: Karma, sans-serif;
+font-size: 16px;
+line-height: 1.5;
+}
+
+.status-section {
+text-align: center;
+}
+
+.status {
+font-family: Karma, sans-serif;
+font-size: 24px;
+color: #D80E0E;
+}
+
+.row-separator {
+border: none;
+border-top: 1px solid #E0E0E0;
+margin: 10px 0;
+}
+
+.close-button {
+position: absolute;
+right: 20px;
+top: 20px;
+background: none;
+border: none;
+font-size: 24px;
+cursor: pointer;
+padding: 5px 10px;
+border-radius: 50%;
+}
+/* Style for the checkbox group container */
+.checkbox-group {
+display: flex;
+align-items: center; /* Align items vertically */
+gap: 20px; /* Space between "Select All" and "PAY FEE" button */
+margin-top: 10px; /* Add some margin at the top */
+}
+
+/* Style for the "Select All" checkbox label */
+.checkbox {
+display: flex;
+align-items: center;
+gap: 8px; /* Space between checkbox and text */
+cursor: pointer;
+font-family: In, sans-serif;
+position: relative;
+margin-bottom: 25px;
+font-size: 16px;
+color: var(--text-color);
+}
+
+/* Custom checkbox styling */
+.checkbox-custom {
+width: 24px;
+height: 24px;
+border: 2px solid #9c9b9b;
+border-radius: 4px;
+background-color: white;
+position: relative;
+transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Checked state for custom checkbox */
+.checkbox input[type="checkbox"]:checked + .checkbox-custom {
+background-color: #365486;
+border-color: #365486;
+}
+
+/* Checkmark for custom checkbox */
+.checkbox input[type="checkbox"]:checked + .checkbox-custom::after {
+content: "✔";
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+font-size: 16px;
+color: white;
+}
+
+/* Hover state for custom checkbox */
+.checkbox input[type="checkbox"]:hover + .checkbox-custom {
+border-color: #2196F3;
+}
+
+/* Focus state for custom checkbox */
+.checkbox input[type="checkbox"]:focus + .checkbox-custom {
+outline: none;
+box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.3);
+}
+
+/* Hide the default checkbox */
+.checkbox input[type="checkbox"] {
+appearance: none;
+position: absolute;
+opacity: 0;
+}
+#payFeeBtn {
+background-color: #365486; 
+color: #fff; /* White text */
+font-size: 18px;
+font-weight: bold;
+padding: 12px 20px;
+border: none;
+border-radius: 6px;
+cursor: pointer;
+display: block;
+width: 100%;
+max-width: 200px;
+text-align: center;
+transition: background 0.3s ease, transform 0.2s ease;
+
+/* Positioning */
+position: relative;
+left: 450px;
+bottom: 1rem; /* Distance from the left */
+}
+
+#payFeeBtn:hover {
+background-color: #4CAF50; /* Green on hover */
+transform: translateY(-2px);
+}
+
+#payFeeBtn:active {
+background-color: #2196F3; /* Blue on click */
+transform: scale(0.98);
+}
+
+@media (max-width: 768px) {
+.customer-row {
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.table-header {
+  grid-template-columns: 1fr;
+}
+
+.profile-section {
+  flex-direction: column;
+}
+
+.status-section {
+  text-align: left;
+}
+}  .env-fees-button {
+padding: 10px 20px;
+background-color: #4CAF50;
+color: white;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+font-size: 16px;
+transition: background-color 0.3s;
+}
+
+
+/*add booking style*/
+.booking-container {
+display:flex;
+flex-direction: column;
+max-width: 650px;
+max-height: 700px;
+position: relative;
+margin-top: auto;
+margin-bottom: 80px;
+font-family: "Karla", sans-serif;
+}
+.form-content {
+justify-content: center;
+margin-bottom: 20px;
+}
+
+.section-header {
+font-size: 32px;
+text-align: center;
+text-transform: uppercase;
+margin-bottom: 30px;
+}
+.form-label {
+font-size: 24px;
+text-transform: uppercase;
+margin-right: 15px;
+white-space: nowrap;
+}
+.form-input {
+flex: 1;
+max-width: 400px;
+height: 35px;
+border: 1px solid #ccc;
+border-radius: 4px;
+padding: 5px 10px;
+}
+.price-display {
+display: flex;
+align-items: center;
+justify-content: flex-end;
+margin-bottom: 22px;
+}
+.price-amount {
+font-size: 28px;
+font-weight: 700;
+}
+.price-period {
+font-size: 20px;
+font-weight: 400;
+}
+.summary-container {
+margin-top: 30px;
+}
+.summary-row {
+display: flex;
+justify-content: space-between;
+margin-bottom: 10px;
+font-size: 24px;
+}
+.total-row {
+display: flex;
+justify-content: space-between;
+margin-top: 20px;
+font-size: 24px;
+font-weight: 700;
+}
+.book-button {
+width: 100%;
+padding: 15px;
+background: #e74c3c;
+color: #fff;
+border: none;
+border-radius: 11px;
+cursor: pointer;
+margin-top: 20px;
+font: 15px "Kdam Thmor", sans-serif;
+}
+.visually-hidden {
+position: absolute;
+width: 1px;
+height: 1px;
+padding: 0;
+margin: -1px;
+overflow: hidden;
+clip: rect(0, 0, 0, 0);
+border: 0;
+}
+@media (max-width: 991px) {
+.booking-container {
+padding: 40px 20px;
+}
+.rental-title {
+font-size: 40px;
+}
+.form-content {
+padding: 0 20px;
+}
+
+.summary-row {
+font-size: 20px;
+}
+.total-row {
+font-size: 20px;
+}
+}
+@media (max-width: 640px) {
+.booking-container {
+padding: 20px;
+}
+.rental-title {
+font-size: 32px;
+}
+.section-header {
+font-size: 28px;
+}
+.form-label {
+font-size: 20px;
+}
+.summary-row {
+font-size: 18px;
+}
+.total-row {
+font-size: 18px;
+}
+}
