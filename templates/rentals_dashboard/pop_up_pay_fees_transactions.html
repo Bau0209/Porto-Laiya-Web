@@ -1,0 +1,66 @@
+<head>
+    <script src="https://cdn.builder.io/js/webcomponents"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/rentals_dashboard/global_pop_up.css') }}">
+</head>
+
+<form action="{{ url_for('pay_fees') }}" method="POST">
+    <div class="popup-container">
+        <div class="popup-header">
+            <div class="popup-info">
+                <div class="popup-id">ENVIRONMENTAL FEE'S LIST</div>
+                <div class="popup-main-content">
+                    <div class="env-fees-container">
+                        <div class="content-wrapper">
+                            <div class="main-panel">
+                                <table class="customer-table" role="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Select</th>
+                                            <th scope="col">Transaction ID</th>
+                                            <th scope="col">Booker Full Name</th>
+                                            <th scope="col"># of Guests</th>
+                                            <th scope="col">Total Environmental Fee</th>
+                                            <th scope="col">Environmental Fee Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for transaction in transactions %}
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" name="transaction_ids" value="{{ transaction.Transaction_ID }}" />
+                                            </td>
+                                            <td>{{ transaction.Transaction_ID }}</td>
+                                            <td>{{ transaction.Booker }}</td>
+                                            <td>{{ transaction.Total_Num_of_Guests }}</td>
+                                            <td>{{ transaction.Environmental_Fee_Total }}</td>
+                                            <td>
+                                                {% if transaction.Environmental_Fee_Status == 'Paid' %}
+                                                    <div class="status-paid">PAID</div>
+                                                {% else %}
+                                                    <div class="status-unpaid">NOT PAID</div>
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="checkbox-group">
+                            <label class="checkbox">
+                                <input type="checkbox" id="selectAll" />
+                                <span class="checkbox-custom"></span> Select All
+                            </label>
+                            <!-- Submit Button with a Spinner -->
+                            <button type="submit" id="payFeeBtn" class="action-btn">
+                                <span id="btn-text">PAY FEE</span>
+                                <span id="spinner" class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="display:none;"></span>
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

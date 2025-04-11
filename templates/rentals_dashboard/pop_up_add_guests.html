@@ -1,0 +1,201 @@
+<head>
+    <script src="https://cdn.builder.io/js/webcomponents"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/rentals_dashboard/global_pop_up.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/rentals_dashboard/add_bookings.css') }}">
+</head>
+<body>
+    <div class="popup-container">
+        <div class="popup-header">
+            <div class="popup-info">
+                <form class="booking-container" action="{{ url_for('pop_up_add_guests') }}" method="POST">
+                    <h1 class="rental-title">{{ resort_name }}</h1>
+                    <input type="hidden" name="resort_name" value="{{ resort_name }}">
+
+                    <div class="flash-messages">
+                        {% with messages = get_flashed_messages(with_categories=true) %}
+                            {% if messages %}
+                                <ul class="flashes">
+                                    {% for category, message in messages %}
+                                        <li class="{{ category }}">{{ message }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        {% endwith %}
+                    </div> 
+
+                    <div class="section-divider"></div>
+
+                    <!-- Transactions Dropdown -->
+                    <div class="form-content">
+                        <h2 class="section-header">Transactions:</h2> 
+                        <select id="transactions-dropdown" name="transaction_id">
+                            <option value="" data-price="0" data-env-fee="0">Select Transaction</option>  
+                            {% for transaction in transactions %}
+                                <option value="{{ transaction.Transaction_ID }}" 
+                                        data-price="{{ transaction.Total_Price }}" 
+                                        data-env-fee="{{ transaction.Environmental_Fee_Total }}">
+                                    {{ transaction.Transaction_ID }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="section-divider"></div>
+
+                    <!-- Guest Input Fields -->
+                    <div id="guests-container">
+                        <div class="form-content plus-guest" data-guest-number="1">
+                            <h2 class="section-header">OTHER GUESTS</h2>
+                            <div class="form-row">
+                                <label for="guestFirstName_1" class="form-label">FIRST NAME:</label>
+                                <input type="text" id="guestFirstName_1" name="guestFirstName_1" class="form-input guest-input" />
+                            </div>
+                            <div class="form-row">
+                                <label for="guestMiddleName_1" class="form-label">MIDDLE NAME:</label>
+                                <input type="text" id="guestMiddleName_1" name="guestMiddleName_1" class="form-input guest-input" />
+                            </div>
+                            <div class="form-row">
+                                <label for="guestLastName_1" class="form-label">LAST NAME:</label>
+                                <input type="text" id="guestLastName_1" name="guestLastName_1" class="form-input guest-input" />
+                            </div>
+                            <div class="gender-container">
+                                <span class="form-label">GENDER:</span>
+                                <div class="radio-group">
+                                    <div class="radio-option">
+                                        <input type="radio" name="guestGender_1" id="guestFemale_1" value="female" class="guest-input" />
+                                        <label for="guestFemale_1">FEMALE</label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <input type="radio" name="guestGender_1" id="guestMale_1" value="male" class="guest-input" />
+                                        <label for="guestMale_1">MALE</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <label for="age" class="form-label">AGE:</label>
+                                <input type="number" id="age" name="bookerAge" class="form-input" required min="18" />
+                            </div>
+                            <div class="form-row">
+                                <label for="contact" class="form-label">CONTACT #:</label>
+                                <input type="tel" id="contact" name="bookerContact" class="form-input" required />
+                            </div>
+                            <div class="form-row">
+                                <label for="email" class="form-label">EMAIL:</label>
+                                <input type="email" id="email" name="bookerEmail" class="form-input" required />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section-divider"></div>
+
+                    <!-- Price Display -->
+                    <div class="form-content">
+                        <h2 class="section-header">NEW TOTAL PRICE</h2>
+                        <div class="price-display">
+                            <span class="form-label">PRICE:</span>
+                            <div class="price-amount">
+                                <span id="price">{{ transactions[0].Price if transactions else 0 }}</span>
+                                <span class="price-period">/day</span>
+                            </div>
+                        </div>
+                        <div class="summary-container">
+                            <div class="summary-row">
+                                <input type="text" id="day-total" class="summary-input hidden" readonly />
+                            </div>                            
+                            <div class="summary-row">
+                                <label>Environmental Fee:</label>
+                                <input type="text" id="environmentalFee" class="summary-input" readonly />
+                            </div>
+                            <div class="total-row">
+                                <label>TOTAL:</label>
+                                <input type="text" id="totalAmount" class="summary-input" value="0" readonly />
+                            </div>
+                            <!-- Book Button -->
+                            <button type="submit" class="book-button">ADD</button>
+                        </div>
+                    </div>
+                </form>
+            </div> 
+        </div>  
+    </div>
+
+    <script src="{{ url_for('static', filename='js/rentals_dashboard/add_bookings.js')}}"></script>
+
+    <!-- JavaScript for Dynamic Price & Fee Calculation -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+    const transactionsDropdown = document.getElementById("transactions-dropdown");
+    const environmentalFeeInput = document.getElementById("environmentalFee");
+    const totalAmountInput = document.getElementById("totalAmount");
+    const dayTotalInput = document.getElementById("day-total");
+
+    let basePrice = 0;
+    let environmentalFee = 0;
+    let numberOfDays = 1; // Default to 1 day
+
+    // Function to calculate the number of days
+    function calculateDays(checkin, checkout) {
+        if (!checkin || !checkout) return 1; // Default to 1 day if dates are missing
+        
+        const checkinDate = new Date(checkin);
+        const checkoutDate = new Date(checkout);
+        
+        // Ensure the dates are valid and in the correct order
+        if (checkinDate > checkoutDate) {
+            console.error("Check-in date is later than checkout date");
+            return 1; // Return 1 day if the dates are invalid
+        }
+        
+        const timeDifference = checkoutDate - checkinDate;
+        
+        return Math.max(1, Math.ceil(timeDifference / (1000 * 60 * 60 * 24))); // Ensure at least 1 day
+    }
+
+    // Update values when a transaction is selected
+    transactionsDropdown.addEventListener("change", function () {
+        const selectedOption = transactionsDropdown.options[transactionsDropdown.selectedIndex];
+        
+        basePrice = parseFloat(selectedOption.getAttribute("data-price")) || 0;
+        environmentalFee = parseFloat(selectedOption.getAttribute("data-env-fee")) || 0;
+
+        // Get check-in and check-out dates from the dataset
+        const checkinDate = selectedOption.getAttribute("data-checkin") || null;
+        const checkoutDate = selectedOption.getAttribute("data-checkout") || null;
+
+        // Update the day total and total price when the transaction changes
+        numberOfDays = calculateDays(checkinDate, checkoutDate);
+        dayTotalInput.value = numberOfDays;
+
+        totalAmountInput.value = ((numberOfDays * basePrice) + environmentalFee).toFixed(2);
+    });
+
+    // Function to update fees when guest details are entered
+    function updateFees() {
+        let allFilled = true;
+
+        // Check if all required fields are filled for this guest
+        document.querySelectorAll(".guest-input").forEach(input => {
+            if ((input.type === "radio" && !document.querySelector(`input[name="${input.name}"]:checked`)) ||
+                (input.type !== "radio" && input.value.trim() === "")) {
+                allFilled = false;
+            }
+        });
+
+        // If all fields are filled, update the environmental fee and total amount
+        if (allFilled) {
+            environmentalFee += 20;  // Increase the environmental fee by 20 per guest
+            environmentalFeeInput.value = environmentalFee.toFixed(2);  // Update the environmental fee input
+            totalAmountInput.value = ((numberOfDays * basePrice) + environmentalFee).toFixed(2);  // Calculate total amount
+        }
+    }
+
+    // Listen for changes in guest details and update fees accordingly
+    document.querySelectorAll(".guest-input").forEach(input => {
+        input.addEventListener("input", updateFees);
+    });
+});
+
+
+
+    </script>
+</body>

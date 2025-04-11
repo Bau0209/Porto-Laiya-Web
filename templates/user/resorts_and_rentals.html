@@ -1,0 +1,121 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+
+<head> 
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rental And Resorts</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/user/resorts_and_rentals.css') }}">
+</head> 
+
+<body style="background: url('{{ url_for('static', filename='images/user/beach_background.png')}}') no-repeat ; background-size: cover;"> 
+    <nav class="nav-container" aria-label="Navigation">
+        <a class="brand-logo">PORTO LAIYA</a>
+        <div class="nav-links" role="navigation">
+        <a href="{{ url_for('user_home') }}">Home</a>
+        <a href="#">Resort and Rentals</a>
+        <a href="{{ url_for('user_about_us') }}">About Us</a>
+        </div>
+    </nav>
+	<div class="main-content">
+		<div id="data-container"> 
+			<br>
+			<section class="header-section">
+				<div class="header-content">
+					<div class="logo-column">
+					<img src="{{ url_for('static', filename='images/user/dark_logo.jpg')}}" alt="Porto Laiya Logo" class="logo-image">
+					</div>
+					<div class="title-column">
+					<div class="title-wrapper">
+						<div class="title-header">
+						<h2 class="section-title">RESORT AND RENTALS</h2>
+						<div id="search-container">
+							<input type="text" id="search-input" placeholder="Search..." />
+						</div>
+						</div>
+					</div>
+					</div>
+				</div>
+			</section> 
+
+			<div class="pagination">
+				<!-- Previous Button -->
+				{% if current_page > 1 %}
+					<a href="{{ url_for('user_resorts_and_rentals', page=current_page - 1) }}" id="prev">Previous</a>
+				{% else %}
+					<span id="prev" class="disabled">Previous</span>
+				{% endif %}
+			
+				<!-- Page Numbers -->
+				{% for page_num in range(1, total_pages + 1) %}
+					<a href="{{ url_for('user_resorts_and_rentals', page=page_num) }}" class="page-link" data-page="{{ page_num }}">
+						{{ page_num }}
+					</a>
+				{% endfor %}
+			
+				<!-- Next Button -->
+				{% if current_page < total_pages %}
+					<a href="{{ url_for('user_resorts_and_rentals', page=current_page + 1) }}" id="next">Next</a>
+				{% else %}
+					<span id="next" class="disabled">Next</span>
+				{% endif %}
+			</div>	
+
+			<div class="card-container">
+				{% for resort in resorts %}
+				<article class="card">
+					<div class="card-content">
+						<div class="card-layout">
+							<div class="image-column">
+								<div class="image-grid">
+									{% for image in resort[2].split(',') %}
+									<img src="{{ url_for('static', filename=image.strip()) }}" alt="{{ resort[0] }}" class="resort-image">
+									{% endfor %}
+								</div>
+							</div>
+							<div class="info-column">
+								<div class="info-content">
+									<div class="resort-info">
+										<h3 class="resort-name">{{ resort[0] }}</h3>
+										<p class="resort-description">{{ resort[1] }}</p>
+									</div>
+									<button class="view-more-btn" onclick="viewMore('{{ resort[0] }}')">
+										VIEW MORE
+									</button>																	
+								</div>
+							</div>
+						</div>
+					</div>
+				</article>
+				{% endfor %}
+			</div>
+			
+			<div class="pagination">
+				<!-- Previous Button -->
+				{% if current_page > 1 %}
+					<a href="{{ url_for('user_resorts_and_rentals', page=current_page - 1) }}" id="prev">Previous</a>
+				{% else %}
+					<span id="prev" class="disabled">Previous</span>
+				{% endif %}
+			
+				<!-- Page Numbers -->
+				{% for page_num in range(1, total_pages + 1) %}
+					<a href="{{ url_for('user_resorts_and_rentals', page=page_num) }}" class="page-link" data-page="{{ page_num }}">
+						{{ page_num }}
+					</a>
+				{% endfor %}
+			
+				<!-- Next Button -->
+				{% if current_page < total_pages %}
+					<a href="{{ url_for('user_resorts_and_rentals', page=current_page + 1) }}" id="next">Next</a>
+				{% else %}
+					<span id="next" class="disabled">Next</span>
+				{% endif %}
+			</div>			
+			
+		</div> 
+	</div>
+	<script src="{{ url_for('static', filename='js/user/resorts_and_rentals.js')}}"> </script>
+</body> 
+
+</html>

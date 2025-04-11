@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookings</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/rentals_dashboard/global_table.css') }}">
+</head>
+<body>
+    <!-- Topbar Section -->
+    <header class="topbar">
+        <img src="https://cdn.builder.io/api/v1/image/assets/784521e35d904b9f9765b3476d13fe54/b9f6c388495aeced7f1f6f2ddc83279893ef9977922d518d4ea4b3bd7d4d0445?apiKey=784521e35d904b9f9765b3476d13fe54&" alt="Porto Laiya Logo" class="hero-logo" />
+        <h2 class="m-0">{{ business_name }}</h2>  <!-- Display dynamic business name here -->
+    </header>
+
+    <!-- Main Content Section -->
+    <div class="d-flex">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <ul class="nav flex-column">
+                <li class="nav-item"><a class="nav-link" href="{{url_for('rentals_dashboard_home')}}">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{url_for('rentals_dashboard_bookings')}}">Bookings</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{url_for('rentals_dashboard_guests')}}">Guests</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{url_for('rentals_dashboard_feedbacks')}}">Feedbacks</a></li>
+                <li class="nav-item logout"><a class="nav-link" href="{{url_for('rentals_dashboard_login')}}">Log out</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <div class="content-panel">
+                <div class="panel-header">
+                    <h1 class="panel-title">GUESTS</h1>
+                    <!-- Search Bar -->
+                    <div class="search-container">
+                        <input type="text" id="searchInput" class="form-control" placeholder="Search..." onkeyup="searchBookings()">
+                    </div>
+                </div>
+        
+                <div class="table-container">
+                    <div class="table-wrapper">
+                        <table class="bookings-table" role="grid">
+                            <thead>
+                                <tr class="table-row-header">
+                                    <th class="table-header" scope="col">#</th>
+                                    <th class="table-header" scope="col">Transaction ID</th>
+                                    <th class="table-header" scope="col">Guest ID</th>
+                                    <th class="table-header" scope="col">Full Name</th>
+                                    <th class="table-header" scope="col">Is Booker</th>
+                                    <th class="table-header" scope="col">Age</th>
+                                    <th class="table-header" scope="col">Gender</th>
+                                    <th class="table-header" scope="col">Contact No</th>
+                                    <th class="table-header" scope="col">Email</th>
+                                    <th class="table-header" scope="col">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for guest in guests %}
+                                <tr class="table-row">
+                                    <td class="table-cell">{{ loop.index }}</td>
+                                    <td class="table-cell">{{ guest.transaction_id }}</td>
+                                    <td class="table-cell">{{ guest.guest_id }}</td>
+                                    <td class="table-cell">{{ guest.full_name }}</td>
+                                    <td class="table-cell">{{ guest.is_booker }}</td>
+                                    <td class="table-cell">{{ guest.age }}</td>
+                                    <td class="table-cell">{{ guest.gender }}</td>
+                                    <td class="table-cell">{{ guest.contact_number }}</td>
+                                    <td class="table-cell">{{ guest.email }}</td>
+                                    <td class="table-cell">
+                                        <button class="edit-button" data-bs-toggle="modal" data-bs-target="#modalContainer" 
+                                            onclick="loadPopup('/popup/rentals_dashboard/guest/{{ guest.guest_id }}/edit')">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                    
+                                        <button class="delete-button" data-bs-toggle="modal" data-bs-target="#deleteConfirmModal" 
+                                            onclick="setDeleteGuest('{{ guest.guest_id }}')">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>
+                                    
+                                        <button class="view-more-button" data-bs-toggle="modal" data-bs-target="#modalContainer" 
+                                            onclick="loadPopup('/popup/rentals_dashboard/guest/{{ guest.guest_id }}/view')">
+                                            <i class="fas fa-ellipsis-h"></i>
+                                        </button>
+                                    </td>                                                                                                     
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+        
+                <div class="action-buttons">
+                    <button class="action-btn" data-bs-toggle="modal" data-bs-target="#modalContainer" 
+                    onclick="loadPopup('{{ url_for("pop_up_add_guests") }}')">ADD</button>
+                </div>
+            </div>
+        </main>        
+    </div>
+
+    <!-- Bootstrap Modal -->
+    <div class="modal fade" id="modalContainer" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Guests</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="modalContent">
+                    <!-- Dynamic content will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>    
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/rentals_dashboard/global_table.js') }}"></script>
+    <script>
+        function searchTable() {
+            let input = document.getElementById("searchInput").value.toUpperCase();
+            let table = document.querySelector("table tbody");
+            let rows = table.getElementsByTagName("tr");
+
+            for (let row of rows) {
+                let text = row.textContent || row.innerText;
+                row.style.display = text.toUpperCase().includes(input) ? "" : "none";
+            }
+        }
+    </script>
+</body>
+</html>

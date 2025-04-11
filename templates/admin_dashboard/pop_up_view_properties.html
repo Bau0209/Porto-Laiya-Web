@@ -1,0 +1,84 @@
+<head>
+    <script src="https://cdn.builder.io/js/webcomponents"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin_dashboard/global_pop_up.css') }}">
+</head>
+
+<div class="popup-container">
+    <div class="popup-header">
+        <div class="popup-info">
+            <h3 class="popup-id">Property Code: {{ property.Property_Code }}</h3>
+
+            <!-- Form for Viewing Property -->
+            <form>
+                <div class="popup-main-content">
+                    <div class="left-section">
+                        <div class="input-group">
+                            <label class="input-label" for="business_name">Business Name:</label>
+                            <input type="text" name="business_name" class="input-field" value="{{ property.Business_Name }}" disabled>
+                        </div>
+                        <div class="input-group">
+                            <label class="input-label" for="owner_name">Owner Name:</label>
+                            <input type="text" name="owner_name" class="input-field" value="{{ property.Owner_Name }}" disabled>
+                        </div>                                             
+
+                        <div class="amenities">
+                            <div class="amenity-item">
+                                <label>Have Pool?</label>
+                                <div class="radio-group">
+                                    <label class="radio">
+                                        <input type="radio" name="pool" value="1" {% if property.Pool|string == "1" %}checked{% endif %} disabled />
+                                        <span class="radio-custom"></span> Yes
+                                    </label>
+                                    <label class="radio">
+                                        <input type="radio" name="pool" value="0" {% if property.Pool|string == "0" %}checked{% endif %} disabled />
+                                        <span class="radio-custom"></span> No
+                                    </label>
+                                </div>
+                            </div>
+                        
+                            <div class="amenity-item">
+                                <label>Pet Allowed?</label>
+                                <div class="radio-group">
+                                    <label class="radio">
+                                        <input type="radio" name="pets" value="1" {% if property.Pets_Allowed|string == "1" %}checked{% endif %} disabled />
+                                        <span class="radio-custom"></span> Yes
+                                    </label>
+                                    <label class="radio">
+                                        <input type="radio" name="pets" value="0" {% if property.Pets_Allowed|string == "0" %}checked{% endif %} disabled />
+                                        <span class="radio-custom"></span> No
+                                    </label>
+                                </div>
+                            </div>
+                        
+                            <div class="amenity-item">
+                                <label>Wifi Available?</label>
+                                <div class="radio-group">
+                                    <label class="radio">
+                                        <input type="radio" name="wifi" value="1" {% if property.Wifi|string == "1" %}checked{% endif %} disabled />
+                                        <span class="radio-custom"></span> Yes
+                                    </label>
+                                    <label class="radio">
+                                        <input type="radio" name="wifi" value="0" {% if property.Wifi|string == "0" %}checked{% endif %} disabled />
+                                        <span class="radio-custom"></span> No
+                                    </label>
+                                </div>
+                            </div>
+                        </div>                        
+
+                        <div class="input-group">
+                            <label class="input-label" for="price">Price:</label>
+                            <input type="text" name="price" class="input-field" value="{{ property.Price }}" disabled>
+                        </div>
+                    </div>
+
+                    <div class="right-content">
+                        <div class="description-content">
+                            <label class="description-title" for="description">Description:</label>
+                            <textarea name="description" class="description-box" disabled>{{ property.Description }}</textarea>
+                        </div>     
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,136 @@
+<head>
+  <script src="https://cdn.builder.io/js/webcomponents"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/rentals_dashboard/global_pop_up.css') }}">
+</head>
+
+<form method="POST" action="{{ url_for('update_guest', guest_id=guest.Guest_ID) }}">
+  <div class="popup-container">
+    <div class="popup-header">
+      <div class="popup-info">
+        <!-- Show Flash Message -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="alert alert-{{ messages[0][0] }}">
+                {{ messages[0][1] }}
+            </div>
+        {% endif %}
+        {% endwith %}
+        <h3 class="popup-id">Guest ID: {{ guest.Guest_ID }}</h3>
+        <div class="popup-main-content">
+          <div class="left-section">
+            <div class="input-group">
+              <label class="input-label" for="guest-firstname">First Name:</label>
+              <input type="text" id="guest-firstname" name="first_name" class="input-field" value="{{ guest.First_Name }}" aria-label="Guest first name">
+            </div>                    
+            <div class="input-group">
+              <label class="input-label" for="guest-middlename">Middle Name:</label>
+              <input type="text" id="guest-middlename" name="middle_name" class="input-field" value="{{ guest.Middle_Name }}" aria-label="Guest middle name">
+            </div>
+            <div class="input-group">
+              <label class="input-label" for="guest-lastname">Last Name:</label>
+              <input type="text" id="guest-lastname" name="last_name" class="input-field" value="{{ guest.Last_Name }}" aria-label="Guest last name">
+            </div>
+            <div class="input-group">
+              <label class="input-label" for="guest-age">Age:</label>
+              <input type="number" id="guest-age" name="age" class="input-field" min="1" value="{{ guest.Age }}" aria-label="Guest age">
+            </div>
+            <div class="input-group">
+              <label class="input-label" for="guest-contact">Contact #:</label>
+              <input type="tel" id="guest-contact" name="contact_number" class="input-field" value="{{ guest.Contact_Number }}" aria-label="Contact number">
+            </div>
+            <div class="input-group">
+              <label class="input-label" for="guest-email">Email:</label>
+              <input type="email" id="guest-email" name="email" class="input-field" value="{{ guest.Email }}" aria-label="Guest email">
+            </div>
+
+            <div class="radio-container">
+              <fieldset>
+                <legend>Gender:</legend>
+                <div class="radio-group">
+                  <div class="radio-item">
+                    <input type="radio" id="gender-male" name="gender" value="Male" {% if guest.Gender == 'Male' %}checked{% endif %}>
+                    <label for="gender-male">Male</label>
+                  </div>
+                  <div class="radio-item">
+                    <input type="radio" id="gender-female" name="gender" value="Female" {% if guest.Gender == 'Female' %}checked{% endif %}>
+                    <label for="gender-female">Female</label>
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset>
+                <legend>Is Booker:</legend>
+                <div class="radio-group">
+                  <div class="radio-item">
+                    <input type="radio" id="is-booker-yes" name="is_booker" value="Yes" {% if guest.Is_Booker == 'Yes' %}checked{% endif %} disabled>
+                    <label for="is-booker-yes">Yes</label>
+                  </div>
+                  <div class="radio-item">
+                    <input type="radio" id="is-booker-no" name="is_booker" value="No" {% if guest.Is_Booker == 'No' %}checked{% endif %} disabled>
+                    <label for="is-booker-no">No</label>
+                  </div>
+                </div>
+              </fieldset>
+            </div>                         
+          </div>
+
+          <div class="right-section">
+            <div class="checkin-times">                                     
+              <div class="input-group">
+                <label class="transaction-id" for="transaction-id">Transaction ID:</label>
+                <input type="text" id="transaction-id" class="input-field" value="{{ guest.Transaction_ID }}" aria-label="Transaction ID" disabled>
+              </div>
+              <div class="input-group">
+                <label class="input-label" for="checkin-date">Date of Checkin:</label>
+                <input type="date" id="checkin-date" name="checkin_date" class="input-field" value="{{ guest.Date_of_Checkin }}" aria-label="Check-in date" disabled>
+              </div>
+              <div class="input-group">
+                <label class="input-label" for="checkout-date">Date of Checkout:</label>
+                <input type="date" id="checkout-date" name="checkout_date" class="input-field" value="{{ guest.Date_of_Checkout }}" aria-label="Check-out date" disabled>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="popup-action-buttons">
+      <button class="edit-btn" type="submit" aria-label="Save">SAVE</button>
+      <button class="delete-btn" type="button" aria-label="Cancel" data-bs-dismiss="modal">CANCEL</button>
+    </div>          
+  </div>
+</form>
+
+<script>
+  document.getElementById("updateGuestForm").addEventListener("submit", function(event) {
+    event.preventDefault();  // Prevent full page reload
+
+    let formData = new FormData(this);
+
+    console.log("URL:", "{{ url_for('update_guest', guest_id=guest.Guest_ID) }}");
+    fetch("{{ url_for('update_guest', guest_id=guest.Guest_ID) }}", {
+        method: "POST",
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        let messageBox = document.getElementById("response-message");
+        messageBox.innerHTML = `<p class="${data.status}">${data.message}</p>`;
+
+        if (data.status === "success") {
+            messageBox.style.color = "green";
+
+            // Close modal after a short delay
+            setTimeout(() => {
+                var modal = bootstrap.Modal.getInstance(document.getElementById('modalContainer'));
+                modal.hide();  // Close Bootstrap modal
+
+                location.reload(); // Reload to update guests table
+            }, 1000);  // Delay 1 second before closing
+        } else {
+            messageBox.style.color = "red";
+        }
+    })
+    .catch(error => console.error("Error:", error));
+  });
+</script>

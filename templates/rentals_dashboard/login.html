@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rental And Resorts</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/rentals_dashboard/login.css') }}">
+</head>
+
+<body>
+    <div class="login-container">
+        <div class="page-wrapper">
+            <div class="header-container">
+                <header class="header">
+                    <!-- You can add a header or navigation if needed -->
+                </header>
+            </div>
+            <main class="login-card">
+                <div class="brand-container">
+                    <img src="{{ url_for('static', filename='images/user/dark_logo.png') }}" alt="Porto Laiya logo" class="brand-logo">
+                    <div>
+                        <h1 class="brand-title">Porto Laiya</h1>
+                        <p class="brand-location">San Juan Batangas</p>
+                    </div>
+                </div>
+
+                <!-- Login Form -->
+                <form action="{{ url_for('rentals_dashboard_login') }}" method="POST">
+                    <div class="form-group">
+                        <label for="username" class="input-label">Username:</label>
+                        <input type="text" id="username" name="username" class="form-input" required aria-required="true" placeholder="Enter your username">
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="input-label">Password:</label>
+                        <input type="password" id="password" name="password" class="form-input" required aria-required="true" placeholder="Enter your password">
+                    </div>
+
+                    <!-- Error Message (if any) -->
+                    {% if error %}
+                        <div style="color: red; text-align: center;">{{ error }}</div>
+                    {% endif %}
+                    <div class="button-container">
+                        <button type="submit" class="submit-button">Log in</button>
+                    </div>  
+                </form>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>

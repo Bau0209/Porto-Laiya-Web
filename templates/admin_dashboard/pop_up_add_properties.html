@@ -1,0 +1,102 @@
+<head>
+  <script src="https://cdn.builder.io/js/webcomponents"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/admin_dashboard/global_pop_up.css') }}">
+</head>
+
+<div class="popup-container">
+  <div class="popup-header">
+      <div class="popup-info">
+          <h3 class="popup-id">Property Code: 12345</h3>
+          <!-- Form for Adding Property -->
+          <form action="{{ url_for('admin_pop_up_add_properties') }}" method="POST">
+              <div class="popup-main-content">
+                  <div class="left-section">
+                      <!-- Business Name -->
+                      <div class="input-group">
+                          <label class="input-label" for="business_name">Business Name:</label>
+                          <input type="text" name="business_name" class="input-field" required>
+                      </div>
+                      <!-- Owner Name -->
+                      <div class="input-group">
+                          <label class="input-label" for="owner_name">Owner Name:</label>
+                          <input type="text" name="owner_name" class="input-field" required>
+                      </div>
+
+                      <!-- Amenities -->
+                      <div class="amenities">
+                          <div class="amenity-item">
+                              <label>Have Pool?</label>
+                              <div class="radio-group">
+                                  <label class="radio">
+                                      <input type="radio" name="pool" value="yes" />
+                                      <span class="radio-custom"></span> Yes
+                                  </label>
+                                  <label class="radio">
+                                      <input type="radio" name="pool" value="no" />
+                                      <span class="radio-custom"></span> No
+                                  </label>
+                              </div>
+                          </div>
+
+                          <div class="amenity-item">
+                              <label>Pet Allowed?</label>
+                              <div class="radio-group">
+                                  <label class="radio">
+                                      <input type="radio" name="pets" value="yes" />
+                                      <span class="radio-custom"></span> Yes
+                                  </label>
+                                  <label class="radio">
+                                      <input type="radio" name="pets" value="no" />
+                                      <span class="radio-custom"></span> No
+                                  </label>
+                              </div>
+                          </div>
+
+                          <div class="amenity-item">
+                              <label>Wifi Available?</label>
+                              <div class="radio-group">
+                                  <label class="radio">
+                                      <input type="radio" name="wifi" value="yes" />
+                                      <span class="radio-custom"></span> Yes
+                                  </label>
+                                  <label class="radio">
+                                      <input type="radio" name="wifi" value="no" />
+                                      <span class="radio-custom"></span> No
+                                  </label>
+                              </div>
+                          </div>
+                      </div>
+
+                      <!-- Price -->
+                      <div class="input-group">
+                          <label class="input-label" for="price">Price:</label>
+                          <input type="text" name="price" class="input-field" required>
+                      </div>
+
+                      <!-- Property Images -->
+                      <div class="input-group">
+                          <label class="input-label" for="property_images">Property Images (URLs):</label>
+                          <input type="text" name="image_1" class="input-field" placeholder="Image URL 1" required>
+                          <input type="text" name="image_2" class="input-field" placeholder="Image URL 2">
+                          <input type="text" name="image_3" class="input-field" placeholder="Image URL 3">
+                          <input type="text" name="image_4" class="input-field" placeholder="Image URL 4">
+                          <!-- You can add more input fields if needed -->
+                      </div>
+                  </div>
+
+                  <div class="right-content">
+                      <div class="description-content">
+                          <label class="description-title" for="description">Description:</label>
+                          <textarea name="description" class="description-box" required></textarea>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="popup-action-buttons">
+                  <button class="edit-btn" type="submit" aria-label="Save Property">SAVE</button>
+                  <button class="delete-btn" type="button" aria-label="Cancel" data-bs-dismiss="modal">CANCEL</button>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>

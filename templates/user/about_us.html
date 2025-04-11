@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rental And Resorts</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/user/about_us.css') }}">
+</head>
+
+<body>
+    <div class="beach-resort">
+        <div class="hero-section" style="background: url('{{ url_for('static', filename='images/user/hero_background.png')}}') no-repeat center center; background-size: cover;">
+            <nav class="nav-container" aria-label="Navigation">
+                <a class="brand-logo">PORTO LAIYA</a>
+                <div class="nav-links" role="navigation">
+                    <a href="{{ url_for('user_home') }}">Home</a>
+                    <a href="{{ url_for('user_resorts_and_rentals') }}">Resort and Rentals</a>
+                    <a href="{{ url_for('user_about_us') }}">About Us</a>
+                </div>
+            </nav>
+
+            <img src="{{ url_for('static', filename='images/user/hero_logo.png') }}"
+                alt="Porto Laiya Beach Resort Logo" class="hero-logo" />
+            <h3 class="hero-title">A WHITE SAND BEACH IN YOUR BACKYARD</h3>
+        </div>
+
+        <section class="main-content">
+            <h2>- About Us -</h2>
+            <p>Porto Laiya is a 35-hectare coastal retreat in San Juan Batangas, offering exclusive residential lots along pristine white sands.</p>
+            <p>This private beach resort community promises a tranquil escape from city life. With a gated beach enclave, a private beach club, and a 400-meter beachfront, it's perfect for sea lovers. Enjoy stunning mountain views and explore the protected reef for swimming and snorkeling.</p>
+            <p>Active Group Inc., a real estate developer in the Philippines, has been a pioneering force for over five decades. From social housing projects to urban skyscrapers and premier leisure havens, the company has shaped the Philippine landscape with a diverse range of impactful developments.</p>
+            <p>Originally founded in 1970 as architectural firm Turalba and Associates, Active Group has evolved into a multibillion-peso real estate powerhouse delivering end-to-end expertise, providing Filipinos consistent quality developments and innovative solutions.</p>
+
+            <address>
+                ACTIVE GROUP OF COMPANIES<br>
+                12/F ACT Tower 135 Sen Gil Puyat Avenue, Salcedo Village,<br>
+                1200 Makati City, Philippines<br>
+                Tel Nos.: <a href="tel:+63288937024">+63 (2) 8893-7024</a> to 28
+            </address>
+        </section>
+
+        <div class="social-links">
+            <a href="https://www.facebook.com/PortoLaiyaBeachResort/" class="social-icon" aria-label="Facebook"><i class="ti ti-brand-facebook icon"></i></a>
+            <a href="https://portolaiya.com.ph/" class="social-icon" aria-label="Website"><i class="ti ti-link icon"></i></a>
+        </div>
+
+        <hr class="section-divider">
+
+        <h2 class="properties-heading">- PROPERTIES IN THE FUTURE -</h2>
+
+        <section class="development-plan">
+            <h3 class="plan-title">Site Development Plan</h3>
+            <p class="plan-location">Brgy. Laiya Ibabao, San Juan, Batangas</p>
+
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-value">35</div>
+                    <div class="stat-description">Hectares of Developable Area</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">648</div>
+                    <div class="stat-description">Residential Coastal Lots for Sale</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">15</div>
+                    <div class="stat-description">Commercial Lots for Sale</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">2</div>
+                    <div class="stat-description">Phase of Development</div>
+                </div>
+            </div>
+
+            <div class="property-types">
+                <div class="property-category">
+                    <h4 class="category-title">RESIDENTIAL LOTS</h4>
+                    <div class="category-details">
+                        DHSUD LTS NO. 24977 | 030427<br>
+                        Lot sizes: 233 sq.m. – 754 sq.m.
+                    </div>
+                </div>
+                <div class="property-category">
+                    <h4 class="category-title">COMMERCIAL LOTS</h4>
+                    <div class="category-details">
+                        DHSUD LTS NO. 030428<br>
+                        Lot sizes: 880 sq.m. – 2526 sq.m.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/75693e8aee7e228ad42bbb8c653e8ea131f04d32b6e3da267d08f8f1eeaa8a50?apiKey=1568ed3c07d646c8a1f8d00fd1240fb8&"
+            alt="Site Development Map of Porto Laiya" class="development-map" />
+    </div>
+    <br>
+    <br>
+</body>
+
+</html>

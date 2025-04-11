@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookings</title>
+    <!-- Bootstrap CSS -->
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/rentals_dashboard/global_table.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/rentals_dashboard/feedbacks.css') }}">
+</head>
+<body>
+    <!-- Topbar Section -->
+    <header class="topbar">
+        <img src="https://cdn.builder.io/api/v1/image/assets/784521e35d904b9f9765b3476d13fe54/b9f6c388495aeced7f1f6f2ddc83279893ef9977922d518d4ea4b3bd7d4d0445?apiKey=784521e35d904b9f9765b3476d13fe54&" alt="Porto Laiya Logo" class="hero-logo" />
+        <h2 class="m-0">{{ business_name }}</h2>  <!-- Display dynamic business name here -->
+    </header>
+
+    <!-- Main Content Section -->
+    <div class="d-flex">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <ul class="nav flex-column">
+                <li class="nav-item"><a class="nav-link" href="{{url_for('rentals_dashboard_home')}}">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{url_for('rentals_dashboard_bookings')}}">Bookings</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{url_for('rentals_dashboard_guests')}}">Guests</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{url_for('rentals_dashboard_feedbacks')}}">Feedbacks</a></li>
+                <li class="nav-item logout"><a class="nav-link" href="{{url_for('rentals_dashboard_login')}}">Log out</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="content-panel">
+                <div class="panel-header">
+                    <h1 class="panel-title">FEEDBACK</h1>
+                </div>
+
+                <section class="feedback-section">
+                    <div class="feedback-container">
+                        {% for review in reviews %}
+                        <div class="feedback-item">
+                            <div class="reviewer-name">                                
+                                <h3>{{ review.full_name }}</h3>
+                                <div class="stars">
+                                    {% for i in range(review.Stars) %}
+                                        ★
+                                    {% endfor %}
+                                    {% for i in range(5 - review.Stars) %}
+                                        ☆
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <textarea class="feedback-text" disabled>{{ review.Review_text }}</textarea>
+                        </div>
+                        {% else %}
+                        <p>No reviews found.</p>
+                        {% endfor %}
+                    </div>
+                
+                    <div class="rating-summary">
+                        <h3>Total Rating</h3>
+                        <p class="rating-score">
+                            {% set total_stars = reviews | sum(attribute='Stars') %}
+                            {% set total_reviews = reviews | length %}
+                            {% set avg_stars = (total_stars / total_reviews) | round(0) | int if total_reviews > 0 else 0 %}
+                            {% if total_reviews > 0 %}
+                                {{ "%.1f"|format(total_stars / total_reviews) }}
+                            {% else %}
+                                No Ratings
+                            {% endif %}
+                        </p>
+                        <div class="stars">
+                            {% for i in range(avg_stars) %}
+                                ★
+                            {% endfor %}
+                            {% for i in range(5 - avg_stars) %}
+                                ☆
+                            {% endfor %}
+                        </div>                        
+                    </div>
+                </section>                               
+            </div>
+        </main>
+    </div>
+</body>
+</html>

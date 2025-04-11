@@ -1,0 +1,106 @@
+<head>
+    <script src="https://cdn.builder.io/js/webcomponents"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin_dashboard/global_pop_up.css') }}">
+</head>
+
+<div class="popup-container">
+    <div class="popup-header">
+        <div class="popup-info">
+            <h3 class="popup-id">Transaction ID: {{ transaction.Transaction_ID }}</h3>
+            <!-- Form for Viewing or Editing Transaction -->
+            <form action="{{ url_for('admin_pop_up_transactions', transaction_id=transaction.Transaction_ID, mode='edit') }}" method="POST">
+                <div class="popup-main-content">
+                    <div class="left-section">
+                        <!-- Booker Information -->
+                        <div class="input-group">
+                            <label class="input-label" for="booker">Booker:</label>
+                            <input type="text" name="booker" class="input-field" value="{{ transaction.Booker }}" disabled required>
+                        </div>
+                        <div class="input-group">
+                            <label class="input-label" for="guests">Number of Guests:</label>
+                            <input type="number" name="guests" class="input-field" value="{{ transaction.Total_Num_of_Guests }}" disabled required>
+                        </div>
+                        <div class="input-group">
+                            <label class="input-label" for="vehicles">Number of Vehicles:</label>
+                            <input type="number" name="vehicles" class="input-field" value="{{ transaction.Total_Num_of_Vehicles }}" disabled required>
+                        </div>
+                        <div class="input-group">
+                            <label class="input-label" for="property_code">Property Code:</label>
+                            <input type="text" name="property_code" class="input-field" value="{{ transaction.Property_Code }}" disabled required>
+                        </div>
+                    </div>
+
+                    <div class="right-section">
+                        <!-- Transaction Information -->
+                        <div class="input-group">
+                            <label class="input-label" for="total_price">Total Price:</label>
+                            <input type="number" name="total_price" class="input-field" value="{{ transaction.Total_Price }}" disabled required>
+                        </div>
+                        <div class="status-group">
+                            <fieldset>
+                                <legend>Transaction Status:</legend>
+                                <div class="radio-group">
+                                    <div class="radio-item">
+                                        <input type="radio" name="transaction_status" value="pending" {% if transaction.Status == 'Pending' %}checked{% endif %} disabled>
+                                        <label for="status-pending">Pending</label>
+                                    </div>
+                                    <div class="radio-item">
+                                        <input type="radio" name="transaction_status" value="cancelled" {% if transaction.Status == 'Cancelled' %}checked{% endif %} disabled>
+                                        <label for="status-cancelled">Cancelled</label>
+                                    </div>
+                                    <div class="radio-item">
+                                        <input type="radio" name="transaction_status" value="committed" {% if transaction.Status == 'Committed' %}checked{% endif %} disabled>
+                                        <label for="status-committed">Committed</label>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Check-in/Check-out and Environmental Fee Details -->
+    <div class="checkin-section">
+        <div class="checkin-container">
+            <div class="checkin-times">
+                <div class="input-group">
+                    <label class="input-label" for="checkin-date">Date of Check-in:</label>
+                    <input type="date" name="checkin_date" class="input-field" value="{{ transaction.Date_of_Checkin }}" disabled required>
+                </div>
+                <div class="input-group">
+                    <label class="input-label" for="checkout-date">Date of Check-out:</label>
+                    <input type="date" name="checkout_date" class="input-field" value="{{ transaction.Date_of_Checkout }}" disabled required>
+                </div>
+            </div>
+            <div class="fee-details">
+                <div class="fee-status">
+                    <div class="input-group">
+                        <label class="input-label" for="env-fee">Environmental Fee Total:</label>
+                        <input type="number" name="env_fee" class="input-field" value="{{ transaction.Environmental_Fee_Total }}" disabled required>
+                    </div>
+                    <fieldset>
+                        <legend>Environmental Fee Status:</legend>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" name="env_status" value="pending" {% if transaction.Environmental_Fee_Status == 'Pending' %}checked{% endif %} disabled>
+                                <label for="env-pending">Pending</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" name="env_status" value="paid" {% if transaction.Environmental_Fee_Status == 'Paid' %}checked{% endif %} disabled>
+                                <label for="env-paid">Paid</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" name="env_status" value="cancelled" {% if transaction.Environmental_Fee_Status == 'Cancelled' %}checked{% endif %} disabled>
+                                <label for="env-cancelled">Cancelled</label>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

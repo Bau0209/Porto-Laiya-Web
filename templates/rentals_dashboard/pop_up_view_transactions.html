@@ -1,0 +1,105 @@
+<head>
+  <script src="https://cdn.builder.io/js/webcomponents"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/rentals_dashboard/global_pop_up.css') }}">
+</head>
+
+<form method="POST" action="{{ url_for('update_transaction', transaction_id=transaction.Transaction_ID) }}">
+  <div class="popup-container">
+    <div class="popup-header">
+      <div class="popup-info">
+        <h3 class="popup-id">Transaction ID: {{ transaction.Transaction_ID }}</h3>
+        <div class="popup-main-content">
+          <div class="left-section">
+            <label class="input-label" for="booker">Booker:</label>
+            <div class="input-group">
+              <label class="input-label" for="booker">First Name:</label>
+              <input type="text" id="booker_firstname" name="first_name" class="input-field" value="{{ transaction.First_Name }}" aria-label="Booker first name" disabled>
+            </div>
+            <div class="input-group">
+              <label class="input-label" for="booker">Middle Name:</label>
+              <input type="text" id="booker_middlename" name="middle_name" class="input-field" value="{{ transaction.Middle_Name }}" aria-label="Booker middle name" disabled>
+            </div>
+            <div class="input-group">
+              <label class="input-label" for="booker">Last Name:</label>
+              <input type="text" id="booker_lastname" name="last_name" class="input-field" value="{{ transaction.Last_Name }}" aria-label="Booker last name" disabled>
+            </div>
+            <div class="input-group">
+              <label class="input-label" for="contact">Contact:</label>
+              <input type="tel" id="contact" name="contact" class="input-field" value="{{ transaction.Contact_Number }}" aria-label="Contact number" disabled>
+            </div>
+            <div class="input-group">
+              <label class="input-label" for="guests">Number of Guests:</label>
+              <input type="number" id="guests" name="guests" class="input-field" value="{{ transaction.Total_Num_of_Guests }}" min="1" aria-label="Number of guests" disabled>
+            </div>
+            <div class="input-group">
+              <label class="input-label" for="vehicles">Number of Vehicles:</label>
+              <input type="number" id="vehicles" name="vehicles" class="input-field" value="{{ transaction.Total_Num_of_Vehicles }}" min="0" aria-label="Number of vehicles" disabled>
+            </div>
+          </div>
+
+          <div class="right-section">
+            <div class="input-group">
+              <label class="input-label" for="total-price">Total Price:</label>
+              <input type="number" id="total-price" name="total_price" class="input-field" value="{{ transaction.Total_Price }}" min="0" step="0.01" aria-label="Total price" disabled>
+            </div>
+            <div class="status-group">
+              <fieldset>
+                <legend>Transaction Status:</legend>
+                <div class="radio-group">
+                    <div class="radio-item">
+                        <input type="radio" id="status-pending" name="transaction_status" value="Pending" {% if transaction.Transaction_Status == 'Pending' %}checked{% endif %} disabled>
+                        <label for="status-pending">Pending</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="status-cancelled" name="transaction_status" value="Cancelled" {% if transaction.Transaction_Status == 'Cancelled' %}checked{% endif %} disabled>
+                        <label for="status-cancelled">Cancelled</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="status-committed" name="transaction_status" value="Committed" {% if transaction.Transaction_Status == 'Committed' %}checked{% endif %} disabled>
+                        <label for="status-committed">Committed</label>
+                    </div>
+                </div>
+              </fieldset>            
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="checkin-section">
+      <div class="checkin-container">
+        <div class="checkin-times">
+          <div class="input-group">
+            <label class="input-label" for="checkin-date">Date of Checkin:</label>
+            <input type="date" id="checkin-date" name="checkin_date" class="input-field" value="{{ transaction.Date_of_Checkin }}" aria-label="Check-in date" disabled>
+          </div>
+          <div class="input-group">
+            <label class="input-label" for="checkout-date">Date of Checkout:</label>
+            <input type="date" id="checkout-date" name="checkout_date" class="input-field" value="{{ transaction.Date_of_Checkout }}" aria-label="Check-out date" disabled>
+          </div>
+        </div>
+        <div class="fee-details">
+          <div class="fee-status">
+            <div class="input-group">
+              <label class="input-label" for="env-fee">Environmental Fee Total:</label>
+              <input type="number" id="env-fee" name="env_fee" class="input-field" value="{{ transaction.Environmental_Fee_Total }}" min="0" step="0.01" aria-label="Environmental fee total" disabled>
+            </div>
+            <fieldset>
+              <legend>Environmental Fee Status:</legend>
+              <div class="radio-group">
+                <div class="radio-item">
+                  <input type="radio" id="env-paid" name="environmental_status" value="paid" {% if transaction.Environmental_Fee_Status == 'Paid' %}checked{% endif %} disabled>
+                  <label for="env-paid">Paid</label>
+                </div>
+                <div class="radio-item">
+                  <input type="radio" id="env-not-paid" name="environmental_status" value="Not Paid" {% if transaction.Environmental_Fee_Status == 'Not Paid' %}checked{% endif %} disabled>
+                  <label for="env-not-paid">Not Paid</label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

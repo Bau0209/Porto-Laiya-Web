@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/rentals_dashboard/global_table.css') }}"">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/rentals_dashboard/home.css') }}"">
+</head>
+<body>
+    <!-- Topbar Section -->
+    <header class="topbar">
+        <img src="https://cdn.builder.io/api/v1/image/assets/784521e35d904b9f9765b3476d13fe54/b9f6c388495aeced7f1f6f2ddc83279893ef9977922d518d4ea4b3bd7d4d0445?apiKey=784521e35d904b9f9765b3476d13fe54&" alt="Porto Laiya Logo" class="hero-logo" />
+        <h2 class="m-0">{{ business_name }}</h2>  <!-- Display dynamic business name here -->
+    </header>
+
+    <!-- Main Content Section -->
+    <div class="d-flex">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <ul class="nav flex-column">
+                <li class="nav-item"><a class="nav-link" href="{{url_for('rentals_dashboard_home')}}">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{url_for('rentals_dashboard_bookings')}}">Bookings</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{url_for('rentals_dashboard_guests')}}">Guests</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{url_for('rentals_dashboard_feedbacks')}}">Feedbacks</a></li>
+                <li class="nav-item logout"><a class="nav-link" href="{{url_for('rentals_dashboard_login')}}">Log out</a></li>
+            </ul>
+        </nav>    
+        <div class="main-content">
+            <div class="status-summary">
+                <div class="welcome-card">
+                    <h1> Welcome back!</h1>
+                    <p>“Success is where preparation and opportunity meet.” <br>
+                        Ready to manage your bookings today?</p>
+                </div>
+                <div class="statistic-card">
+                    <h3>Bookings for Today</h3>
+                    <p id="booking-count">{{ bookings_for_today }}</p>  <!-- Dynamic data for bookings today -->
+                </div>
+                <div class="statistic-card">
+                    <h3>Total Upcoming Bookings</h3>
+                    <p id="booking-count">{{ total_upcoming_bookings }}</p>  <!-- Dynamic data for upcoming bookings -->
+                </div>
+                <div class="statistic-card">
+                    <h3>Unpaid Environmental Fee</h3>
+                    <p id="rooms-scheduled">{{ unpaid_environmental_fee }}</p>  <!-- Dynamic data for unpaid environmental fees -->
+                </div>
+            </div>
+            
+            <form method="POST" enctype="multipart/form-data" action="{{ url_for('update_resort_details') }}">
+                <div class="custom-edit">
+                  <div class="header-title">
+                    <h1>Resort Details</h1>
+                  </div>
+                  <hr class="divider">
+                  <div class="edits">
+                    <!-- Preview Pictures Section -->
+                    <div class="pictures-edit">
+                      <h2>Preview Pictures</h2>
+                      <div class="carousel">
+                        <div class="carousel-main">
+                          {% if images %}
+                              <img id="main-image" src="{{ url_for('static', filename=images[0]) }}" alt="Main Image">
+                          {% else %}
+                              <p>No images available.</p>
+                          {% endif %}
+                        </div>
+                        <div class="thumbnail">
+                          <div class="carousel-thumbnails">
+                            {% for image in images %}
+                                <img src="{{ url_for('static', filename=image) }}" alt="Thumbnail" data-full="{{ url_for('static', filename=image) }}">
+                            {% endfor %}
+                          </div>
+                        </div>
+                      </div>
+                      <input type="file" name="images" multiple>
+                    </div>
+              
+                    <!-- Description Edit -->
+                    <div class="description-edit">
+                      <h2>Description</h2>
+                      <textarea name="description" class="description-textbox">{{ description }}</textarea>
+                      <button type="submit" class="save-button">Save Description</button>
+                    </div>
+              
+                    <!-- Price Edit -->
+                    <div class="price-edit">
+                      <h2>Price per Day</h2>
+                      <textarea name="price_per_day" class="night-price">{{ price_per_day }}</textarea>
+                      <button type="submit" class="save-button">Save Price</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/rentals_dashboard/home.js') }}"></script>
+</body>
+</html>
